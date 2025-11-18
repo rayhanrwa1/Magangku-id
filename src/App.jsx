@@ -1,7 +1,9 @@
 import Button from "@mui/material/Button";
+import Beranda from './components/beranda';
 import HomeIcon from "@mui/icons-material/Home";
+import './index.css';
 
-export default function App() {
+function App() {
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <h1 className="text-3xl font-bold text-blue-600 mb-4">
@@ -11,6 +13,8 @@ export default function App() {
       <Button variant="contained" startIcon={<HomeIcon />}>
         MUI Button
       </Button>
+      <Beranda />
     </div>
   );
 }
+export default App;
