@@ -16,7 +16,7 @@ Platform ini dibuat sebagai bagian dari proyek tugas perkuliahan untuk mengimple
 
 
 
-
+version 1.0
 
 
 # React + Vite
