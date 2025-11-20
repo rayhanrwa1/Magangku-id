@@ -1,4 +1,11 @@
-export default function JobCard({ company, position, lokasi, tipe, durasi, image }) {
+export default function JobCard({
+  company,
+  position,
+  lokasi,
+  tipe,
+  durasi,
+  image,
+}) {
   return (
     <div className="p-6 bg-white shadow-lg rounded-2xl border">
       <img src={image} alt="logo" className="h-10 mb-3" />
@@ -8,7 +15,9 @@ export default function JobCard({ company, position, lokasi, tipe, durasi, image
       <p className="text-gray-500 text-sm">{lokasi}</p>
 
       <div className="flex gap-2 mt-3 text-xs">
-        <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full">{tipe}</span>
+        <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full">
+          {tipe}
+        </span>
         <span className="px-3 py-1 bg-gray-200 rounded-full">{durasi}</span>
       </div>
 
