@@ -1,3 +1,24 @@
+WEB - MAGANGKU
+
+Magangku adalah sebuah platform berbasis web yang dirancang untuk membantu mahasiswa dalam mencari dan mendaftar program magang secara lebih mudah dan terstruktur.
+Aplikasi ini menyediakan fitur pencarian lowongan magang, informasi perusahaan, detail posisi yang ditawarkan, serta fitur pendaftaran dan komunikasi antara mahasiswa dan penyedia magang.
+
+Platform ini dibuat sebagai bagian dari proyek tugas perkuliahan untuk mengimplementasikan desain UI/UX Figma ke dalam aplikasi web yang fungsional.
+
+
+
+## Anggota Tim :
+1. Moh. Ahsan Malik (202210370311128)
+2. Teguh Tri Saputra. (202210370311322)
+3. ⁠Amalia Ramadhani P. (202210370311463)
+4. Rayhan Rizky Widi A. (202210370311470)
+5. Farras Sandy Harsoyo (202210370311503)
+
+
+
+version 1.0
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
