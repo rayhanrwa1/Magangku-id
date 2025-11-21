@@ -1,6 +1,6 @@
-import HeroSection from "../../sections/herosection";
-import JobSection from "../../sections/jobsection";
-import FaqSection from "../../sections/faqsection";
+import HeroSection from "../../sections/home/herosection";
+import JobSection from "../../sections/home/jobsection";
+import FaqSection from "../../sections/home/faqsection";
 import Footer from "../../layout/footer";
 import Navbar from "../../layout/navbar";
 
