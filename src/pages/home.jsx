@@ -6,7 +6,7 @@ import Home from "../components/home";
 const index = () => {
   return (
     <Wrapper>
-      <SEO pageTitle={""} />
+      <SEO pageTitle={"Beranda -  Mitra Magangku"} />
       <Home />
     </Wrapper>
   );

@@ -5,7 +5,7 @@ import Login from "../components/auth/login";
 const index = () => {
   return (
     <Wrapper>
-      <SEO pageTitle={"Index - Admin Magangku"} />
+      <SEO pageTitle={"Index - Mitra Magangku"} />
       <Login />
     </Wrapper>
   );
