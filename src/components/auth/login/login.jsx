@@ -310,6 +310,7 @@ const Login = () => {
 
                   <button
                     type="button"
+                    onClick={() => navigate("/lupapassword")}
                     disabled={isLoading}
                     className="text-base text-gray-600 hover:text-gray-900 font-medium transition-colors"
                   >
