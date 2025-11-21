@@ -9,7 +9,7 @@ import {
   MenuItem,
   Box,
 } from "@mui/material";
-
+import { useNavigate } from "react-router-dom";
 function Navbar({
   mitraName = "Nama Perusahaan",
   mitraEmail = "hrd@perusahaan.com",
@@ -18,6 +18,7 @@ function Navbar({
 }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
 
   const handleOpenMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -28,14 +29,13 @@ function Navbar({
   };
 
   const handleClickProfile = () => {
-    handleCloseMenu();
-    if (onProfile) onProfile();
+    navigate("/profile");
   };
 
-  const handleClickLogout = () => {
-    handleCloseMenu();
-    if (onLogout) onLogout();
-  };
+  // const handleClickLogout = () => {
+  //   handleCloseMenu();
+  //   if (onLogout) onLogout();
+  // };
 
   return (
     <AppBar
@@ -46,7 +46,6 @@ function Navbar({
       sx={{ borderBottom: "1px solid rgb(226 232 240)" }}
     >
       <Toolbar className="px-4 lg:px-6 flex justify-end">
-        {/* kanan: info mitra + avatar dropdown */}
         <Box className="flex items-center gap-3">
           <div className="hidden sm:flex flex-col items-end">
             <Typography variant="body2" className="font-medium text-slate-800">
@@ -58,10 +57,7 @@ function Navbar({
           </div>
 
           <IconButton onClick={handleOpenMenu} size="small">
-            <Avatar
-              alt={mitraName}
-              src="" // isi URL logo perusahaan kalau sudah ada
-            />
+            <Avatar alt={mitraName} src="" />
           </IconButton>
 
           <Menu
@@ -72,7 +68,7 @@ function Navbar({
             transformOrigin={{ vertical: "top", horizontal: "right" }}
           >
             <MenuItem onClick={handleClickProfile}>Lihat Profile</MenuItem>
-            <MenuItem onClick={handleClickLogout}>Logout</MenuItem>
+            {/* <MenuItem onClick={handleClickLogout}>Logout</MenuItem> */}
           </Menu>
         </Box>
       </Toolbar>
