@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock, AlertCircle } from "lucide-react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../../src/database/firebase";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -10,7 +14,6 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const lottieRef = useRef(null);
-  const animationInstance = useRef(null);
 
   useEffect(() => {
     // Load dotLottie player dynamically
@@ -60,18 +63,44 @@ const Login = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) return;
 
     setIsLoading(true);
 
-    setTimeout(() => {
-      console.log("Login data:", formData);
-      alert("Login berhasil! (Demo)");
+    try {
+      // Login dengan Firebase
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
+
+      console.log("Login berhasil:", userCredential.user);
+
+      // Redirect ke dashboard setelah login berhasil
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 500);
+    } catch (err) {
+      let errorMessage = "Terjadi kesalahan saat login";
+
+      if (err.code === "auth/user-not-found") {
+        errorMessage = "Email tidak terdaftar";
+      } else if (err.code === "auth/wrong-password") {
+        errorMessage = "Password salah";
+      } else if (err.code === "auth/invalid-email") {
+        errorMessage = "Format email tidak valid";
+      } else if (err.code === "auth/user-disabled") {
+        errorMessage = "Akun telah dinonaktifkan";
+      }
+
+      setErrors({ submit: errorMessage });
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   useEffect(() => {
@@ -100,7 +129,7 @@ const Login = () => {
           <div className="w-full max-w-xl">
             <dotlottie-player
               ref={lottieRef}
-              src="/lottie/init.lottie"
+              src="/lottie/Login.lottie"
               background="transparent"
               speed="1"
               style={{ width: "100%", height: "550px" }}
@@ -121,6 +150,14 @@ const Login = () => {
                   Silakan login ke akun Anda
                 </p>
               </div>
+
+              {/* Error Message */}
+              {errors.submit && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex gap-3">
+                  <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                  <p className="text-red-700 text-sm">{errors.submit}</p>
+                </div>
+              )}
 
               <div className="space-y-6">
                 {/* Email */}
@@ -197,7 +234,10 @@ const Login = () => {
                     />
                     Ingat saya
                   </label>
-                  <button className="text-base text-gray-600 hover:text-gray-900 font-medium transition-colors">
+                  <button
+                    type="button"
+                    className="text-base text-gray-600 hover:text-gray-900 font-medium transition-colors"
+                  >
                     Lupa password?
                   </button>
                 </div>
@@ -223,8 +263,11 @@ const Login = () => {
               <div className="pt-6 border-t border-gray-200">
                 <p className="text-center text-base text-gray-600">
                   Belum punya akun?{" "}
-                  <button className="text-gray-900 font-semibold hover:underline">
-                    Daftar
+                  <button
+                    onClick={() => navigate("/register")}
+                    className="text-gray-900 font-semibold hover:underline transition-colors"
+                  >
+                    Daftar Mitra Sekarang
                   </button>
                 </p>
               </div>

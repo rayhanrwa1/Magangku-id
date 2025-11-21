@@ -1,11 +1,11 @@
 import Wrapper from "../layout/wrapper";
 import SEO from "../common/seo";
-import Login from "../components/auth/login";
+import Login from "../components/auth/register";
 
 const index = () => {
   return (
     <Wrapper>
-      <SEO pageTitle={"Index - Admin Magangku"} />
+      <SEO pageTitle={"Register - Admin Magangku"} />
       <Login />
     </Wrapper>
   );
