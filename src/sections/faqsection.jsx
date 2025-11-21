@@ -1,4 +1,4 @@
-export default function Faqsection() {
+export default function FAQSection() {
   return (
     <section className="px-12 py-20">
       <h2 className="text-3xl font-bold mb-10 text-center">

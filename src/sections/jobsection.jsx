@@ -1,6 +1,6 @@
-import JobCard from "../layout/jobcard";
+import JobCard from "../components/JobCard";
 
-const Jobsection = () => {
+export default function JobSection() {
   return (
     <section className="px-12 py-16">
       <h2 className="text-3xl font-bold mb-10 text-center">
@@ -8,7 +8,7 @@ const Jobsection = () => {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <JobCard
+        <JobCard 
           company="PT Mandiri Utama Finance"
           position="Software Quality Assurance"
           lokasi="Tebet, Jakarta Selatan"
@@ -21,6 +21,4 @@ const Jobsection = () => {
       </div>
     </section>
   );
-};
-
-export default Jobsection;
+}
