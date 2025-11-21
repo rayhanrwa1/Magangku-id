@@ -1,13 +1,11 @@
 import React from "react";
 
-const wrapper = ({ children }) => {
+const Wrapper = ({ children }) => {
   return (
-    <div className="min-h-screen w-full bg-gray-50">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {children}
-      </div>
+    <div className="min-h-screen w-full bg-white">
+      {children}
     </div>
   );
 };
 
-export default wrapper;
+export default Wrapper;

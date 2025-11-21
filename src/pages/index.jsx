@@ -1,5 +1,5 @@
 import Wrapper from "../layout/wrapper";
-import SEO from "../layout/seo";
+import SEO from "../common/seo";
 import Home from "../components/home/index";
 
 const Index = () => {
