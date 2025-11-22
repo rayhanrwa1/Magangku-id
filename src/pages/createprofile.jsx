@@ -1,12 +1,12 @@
 import Wrapper from "../layout/wrapper";
 import SEO from "../common/seo";
-import Profile from "../components/profile/profile";
+import CreateProfile from "../components/profile/createprofile/";
 
 const index = () => {
   return (
     <Wrapper>
-      <SEO pageTitle={"Profile - Mitra Magangku"} />
-      <Profile />
+      <SEO pageTitle={"Create Profile - Mitra Magangku"} />
+      <CreateProfile />
     </Wrapper>
   );
 };

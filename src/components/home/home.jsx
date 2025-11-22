@@ -18,13 +18,11 @@ function Home() {
     const unsub = onAuthStateChanged(auth, async (user) => {
       if (!user) return;
 
-      // --- Ambil data user ---
       const userSnap = await get(ref(db, `users/${user.uid}`));
       if (userSnap.exists()) {
         setUserData(userSnap.val());
       }
 
-      // --- Cek folder mitra ---
       const mitraSnap = await get(ref(db, `mitra/${user.uid}`));
       if (mitraSnap.exists()) {
         setMitraData(mitraSnap.val());
@@ -68,7 +66,7 @@ function Home() {
                   </p>
                   <p className="text-red-700 text-sm">
                     Silakan lengkapi{" "}
-                    <span className="font-semibold">Profile Mitra</span>
+                    <span className="font-semibold">Profile Mitra </span>
                     untuk melanjutkan proses verifikasi dan menggunakan
                     dashboard.
                   </p>
@@ -102,8 +100,6 @@ function Home() {
               </div>
             </div>
           )}
-
-          <p className="text-slate-700">Area konten untuk preview.</p>
         </main>
       </div>
     </div>

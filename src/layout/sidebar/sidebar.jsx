@@ -10,47 +10,52 @@ import {
   DialogActions,
   Button,
 } from "@mui/material";
-import { Category, Briefcase, Profile2User, Logout } from "iconsax-react";
+import {
+  Category,
+  Briefcase,
+  Profile2User,
+  Logout,
+  HambergerMenu,
+} from "iconsax-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../../../src/database/firebase";
 import logoMagangku from "/images/magangku-logo.png";
 
-const NAVY = "#102C57";
-
 const menuItems = [
   { key: "dashboard", label: "Dashboard", icon: Category, path: "/home" },
-  {
-    key: "jobs",
-    label: "Kelola Lowongan",
-    icon: Briefcase,
-    path: "#",
-  },
-  {
-    key: "review",
-    label: "Review Pelamar",
-    icon: Profile2User,
-    path: "#",
-  },
+  { key: "jobs", label: "Kelola Lowongan", icon: Briefcase, path: "/jobs" },
+  { key: "review", label: "Review Pelamar", icon: Profile2User, path: "#" },
 ];
 
-function Sidebar({ isOpen = true, onClose, activeKey }) {
+function Sidebar({ activeKey }) {
   const navigate = useNavigate();
   const location = useLocation();
   const currentPath = location.pathname.replace(/\/+$/, "");
-
-  // State dialog logout
   const [openLogout, setOpenLogout] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const handleConfirmLogout = () => {
-    setOpenLogout(true);
+  const preloadJobs = async () => {
+    try {
+      const user = auth.currentUser;
+      if (!user) return;
+
+      await get(ref(db, `mitra/${user.uid}`));
+      await get(ref(db, "jobs"));
+      await get(ref(db, "applications"));
+    } catch (err) {
+      console.error("Preload error:", err);
+    }
   };
 
   const handleLogout = async () => {
     try {
       await auth.signOut();
-      sessionStorage.clear();
+
+
       localStorage.clear();
-      navigate("/");
+      sessionStorage.clear();
+
+      navigate("/", { replace: true });
     } catch (err) {
       console.error("Logout error:", err);
     }
@@ -58,35 +63,68 @@ function Sidebar({ isOpen = true, onClose, activeKey }) {
 
   return (
     <>
-      {/* Backdrop untuk mobile */}
-      {isOpen && (
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setSidebarOpen(true)}
+        className="lg:hidden fixed top-4 left-4 z-30 p-2 bg-white rounded-lg shadow-md border border-gray-200"
+      >
+        <HambergerMenu size={24} color="#1E293B" />
+      </button>
+
+      {/* Mobile Backdrop */}
+      {sidebarOpen && (
         <div
-          className="md:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
-          onClick={onClose}
+          className="lg:hidden fixed inset-0 bg-black/30 z-40 transition-opacity"
+          onClick={() => setSidebarOpen(false)}
         />
       )}
 
+      {/* Sidebar */}
       <aside
         className={`
-          fixed md:static top-0 left-0 h-full w-64 bg-white border-r border-gray-200 pt-2
-          flex flex-col z-50 transition-transform duration-300 ease-out
-          ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+          fixed lg:static top-0 left-0 min-h-screen w-64 bg-white border-r border-slate-200
+          flex flex-col z-50 transition-transform duration-300 ease-out pt-4
+          ${
+            sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+          }
         `}
       >
-        {/* HEADER */}
-        <div className="h-16 px-6 flex items-center justify-between border-b border-gray-100">
-          <div className="flex flex-col">
+        {/* Header */}
+        <div className="h-16 px-5 flex items-center justify-between border-b border-slate-100 flex-shrink-0">
+          <div>
             <img
               src={logoMagangku}
               className="h-7 w-auto"
               alt="Magangku Logo"
             />
-            <span className="text-xs text-gray-500 mt-1">Panel Mitra</span>
+            <span className="text-xs text-slate-500 mt-0.5 block">
+              Panel Mitra
+            </span>
           </div>
+
+          {/* Close button - Mobile only */}
+          <button
+            onClick={() => setSidebarOpen(false)}
+            className="lg:hidden p-1.5 hover:bg-slate-100 rounded-lg transition-colors"
+          >
+            <svg
+              className="w-5 h-5 text-slate-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
         </div>
 
-        {/* MENU */}
-        <nav className="flex-1 px-3 py-4">
+        {/* Menu */}
+        <nav className="flex-1 px-3 py-4 overflow-y-auto">
           <List
             disablePadding
             sx={{ display: "flex", flexDirection: "column", gap: "4px" }}
@@ -98,34 +136,39 @@ function Sidebar({ isOpen = true, onClose, activeKey }) {
               return (
                 <ListItemButton
                   key={item.key}
-                  onClick={() => navigate(item.path)}
+                  onClick={async () => {
+                    if (item.path === "/jobs") {
+                      await preloadJobs();
+                    }
+
+                    navigate(item.path);
+                    setSidebarOpen(false);
+                  }}
                   sx={{
                     borderRadius: "8px",
                     padding: "10px 12px",
-                    backgroundColor: active ? "#EFF6FF" : "transparent",
-                    color: active ? NAVY : "#475569",
-                    border: active
-                      ? "1px solid #DBEAFE"
-                      : "1px solid transparent",
-                    transition: "all 0.2s ease",
+                    backgroundColor: active ? "#F1F5F9" : "transparent",
+                    color: active ? "#0F172A" : "#64748B",
+                    transition: "all 0.15s ease",
                     "&:hover": {
-                      backgroundColor: active ? "#EFF6FF" : "#F8FAFC",
+                      backgroundColor: active ? "#E2E8F0" : "#F8FAFC",
                     },
                   }}
                 >
-                  <ListItemIcon sx={{ minWidth: 32 }}>
+                  <ListItemIcon sx={{ minWidth: 36 }}>
                     <Icon
-                      size="18"
-                      variant="Bulk"
-                      color={active ? NAVY : "#64748b"}
+                      size={20}
+                      variant={active ? "Bold" : "Linear"}
+                      color={active ? "#0F172A" : "#64748B"}
                     />
                   </ListItemIcon>
 
                   <ListItemText
                     primary={item.label}
                     primaryTypographyProps={{
-                      className: "text-sm font-medium",
-                      sx: { color: "inherit" },
+                      fontSize: "14px",
+                      fontWeight: active ? 600 : 500,
+                      color: "inherit",
                     }}
                   />
                 </ListItemButton>
@@ -134,94 +177,70 @@ function Sidebar({ isOpen = true, onClose, activeKey }) {
           </List>
         </nav>
 
-        {/* LOGOUT */}
-        <div className="px-3 pb-4 border-t border-gray-100 pt-3">
+        {/* Logout */}
+        <div className="px-3 pb-4 pt-3 border-t border-slate-100 flex-shrink-0">
           <ListItemButton
-            onClick={handleConfirmLogout}
+            onClick={() => setOpenLogout(true)}
             sx={{
               borderRadius: "8px",
               padding: "10px 12px",
-              color: "#475569",
-              transition: "all 0.2s ease",
+              color: "#64748B",
+              transition: "all 0.15s ease",
               "&:hover": {
                 backgroundColor: "#FEF2F2",
                 color: "#DC2626",
-                "& .logout-icon": {
-                  color: "#DC2626",
-                },
               },
             }}
           >
-            <ListItemIcon sx={{ minWidth: 32 }}>
-              <Logout
-                size="18"
-                color="#64748b"
-                variant="Bulk"
-                className="logout-icon"
-              />
+            <ListItemIcon sx={{ minWidth: 36 }}>
+              <Logout size={20} color="currentColor" />
             </ListItemIcon>
 
             <ListItemText
               primary="Logout"
               primaryTypographyProps={{
-                className: "text-sm font-medium",
-                sx: { color: "inherit" },
+                fontSize: "14px",
+                fontWeight: 500,
+                color: "inherit",
               }}
             />
           </ListItemButton>
         </div>
       </aside>
 
-      {/* ================================
-          DIALOG KONFIRMASI LOGOUT
-      ================================= */}
+      {/* Logout Dialog */}
       <Dialog
         open={openLogout}
         onClose={() => setOpenLogout(false)}
         fullWidth
         maxWidth="xs"
         PaperProps={{
-          sx: {
-            borderRadius: "12px",
-            padding: "8px",
-          },
-        }}
-        BackdropProps={{
-          sx: {
-            backgroundColor: "rgba(0, 0, 0, 0.3)",
-            backdropFilter: "blur(4px)",
-          },
+          sx: { borderRadius: "12px", padding: "4px" },
         }}
       >
         <DialogTitle
-          sx={{
-            fontWeight: 600,
-            fontSize: "18px",
-            color: "#111827",
-            paddingBottom: "8px",
-          }}
+          sx={{ fontWeight: 600, fontSize: "18px", paddingBottom: "8px" }}
         >
           Konfirmasi Logout
         </DialogTitle>
 
-        <DialogContent sx={{ color: "#6B7280", paddingBottom: "16px" }}>
+        <DialogContent sx={{ color: "#64748B", paddingBottom: "12px" }}>
           Yakin ingin keluar dari akun Anda?
         </DialogContent>
 
-        <DialogActions sx={{ padding: "16px", gap: "12px" }}>
+        <DialogActions sx={{ padding: "12px 20px", gap: "8px" }}>
           <Button
             onClick={() => setOpenLogout(false)}
             variant="outlined"
             sx={{
-              borderColor: "#D1D5DB",
-              color: "#374151",
+              borderColor: "#CBD5E1",
+              color: "#475569",
               textTransform: "none",
               fontWeight: 500,
               borderRadius: "8px",
-              padding: "8px 20px",
               "&:hover": {
-                borderColor: "#9CA3AF",
-                backgroundColor: "#F9FAFB",
+                borderColor: "#94A3B8",
+                backgroundColor: "#F8FAFC",
               },
             }}
           >
@@ -236,7 +255,6 @@ function Sidebar({ isOpen = true, onClose, activeKey }) {
               textTransform: "none",
               fontWeight: 500,
               borderRadius: "8px",
-              padding: "8px 20px",
               boxShadow: "none",
               "&:hover": {
                 backgroundColor: "#B91C1C",

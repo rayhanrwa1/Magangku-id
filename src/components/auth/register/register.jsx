@@ -4,6 +4,7 @@ import { Eye, EyeOff, Mail, Lock, AlertCircle } from "lucide-react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, set } from "firebase/database";
 import { auth, db } from "../../../../src/database/firebase";
+import { hashPassword } from "../../../utils/hashPassword";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -97,6 +98,7 @@ const Register = () => {
     setSuccessMessage("");
 
     try {
+      // REGISTER firebase auth (password otomatis terenkripsi)
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         formData.email,
@@ -105,10 +107,10 @@ const Register = () => {
 
       const userId = userCredential.user.uid;
 
+      // SIMPAN PROFIL user TANPA password
       await set(ref(db, `users/${userId}`), {
         id: userId,
         email: formData.email,
-        password: formData.password,
         userable_id: userId,
         userable_type: formData.userable_type,
         verified: false,
@@ -116,6 +118,7 @@ const Register = () => {
       });
 
       setSuccessMessage("Registrasi berhasil! Silakan login.");
+
       setFormData({
         email: "",
         password: "",
@@ -123,9 +126,7 @@ const Register = () => {
         userable_type: "mitra",
       });
 
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
+      setTimeout(() => navigate("/"), 2000);
     } catch (err) {
       let errorMessage = "Terjadi kesalahan saat registrasi";
 
@@ -193,8 +194,7 @@ const Register = () => {
                   <p className="text-green-700 text-sm">{successMessage}</p>
                 </div>
               )}
-
-              <div className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 {/* Email */}
                 <div className="space-y-2">
                   <label className="text-base font-medium text-gray-700">
@@ -207,19 +207,10 @@ const Register = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full pl-12 pr-4 py-3 text-base rounded-lg border ${
-                        errors.email
-                          ? "border-red-300 focus:border-red-400 focus:ring-red-100"
-                          : "border-gray-300 focus:border-gray-400 focus:ring-gray-100"
-                      } focus:outline-none focus:ring-4 transition-all bg-white text-gray-900 placeholder-gray-400`}
+                      className="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300"
                       placeholder="nama@email.com"
                     />
                   </div>
-                  {errors.email && (
-                    <p className="text-red-600 text-sm flex gap-1 items-center mt-1">
-                      <AlertCircle className="w-4 h-4" /> {errors.email}
-                    </p>
-                  )}
                 </div>
 
                 {/* Password */}
@@ -234,33 +225,13 @@ const Register = () => {
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
-                      className={`w-full pl-12 pr-14 py-3 text-base rounded-lg border ${
-                        errors.password
-                          ? "border-red-300 focus:border-red-400 focus:ring-red-100"
-                          : "border-gray-300 focus:border-gray-400 focus:ring-gray-100"
-                      } focus:outline-none focus:ring-4 transition-all bg-white text-gray-900 placeholder-gray-400`}
-                      placeholder="••••••••"
+                      className="w-full pl-12 pr-14 py-3 rounded-lg border border-gray-300"
+                      placeholder="•••••••"
                     />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-                    >
-                      {showPassword ? (
-                        <EyeOff className="w-5 h-5" />
-                      ) : (
-                        <Eye className="w-5 h-5" />
-                      )}
-                    </button>
                   </div>
-                  {errors.password && (
-                    <p className="text-red-600 text-sm flex gap-1 items-center mt-1">
-                      <AlertCircle className="w-4 h-4" /> {errors.password}
-                    </p>
-                  )}
                 </div>
 
-                {/* Confirm Password */}
+                {/* Konfirmasi */}
                 <div className="space-y-2">
                   <label className="text-base font-medium text-gray-700">
                     Konfirmasi Password
@@ -272,71 +243,21 @@ const Register = () => {
                       name="confirm_password"
                       value={formData.confirm_password}
                       onChange={handleChange}
-                      className={`w-full pl-12 pr-14 py-3 text-base rounded-lg border ${
-                        errors.confirm_password
-                          ? "border-red-300 focus:border-red-400 focus:ring-red-100"
-                          : "border-gray-300 focus:border-gray-400 focus:ring-gray-100"
-                      } focus:outline-none focus:ring-4 transition-all bg-white text-gray-900 placeholder-gray-400`}
-                      placeholder="••••••••"
+                      className="w-full pl-12 pr-14 py-3 rounded-lg border border-gray-300"
+                      placeholder="•••••••"
                     />
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setShowConfirmPassword(!showConfirmPassword)
-                      }
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-                    >
-                      {showConfirmPassword ? (
-                        <EyeOff className="w-5 h-5" />
-                      ) : (
-                        <Eye className="w-5 h-5" />
-                      )}
-                    </button>
                   </div>
-                  {errors.confirm_password && (
-                    <p className="text-red-600 text-sm flex gap-1 items-center mt-1">
-                      <AlertCircle className="w-4 h-4" />{" "}
-                      {errors.confirm_password}
-                    </p>
-                  )}
                 </div>
 
-                {/* Tipe Pengguna */}
-                <div className="space-y-2">
-                  <label className="text-base font-medium text-gray-700">
-                    Tipe Pengguna
-                  </label>
-
-                  {/* Value yang dikirim ke backend */}
-                  <input type="hidden" name="userable_type" value="mitra" />
-
-                  {/* Field tampilan saja */}
-                  <input
-                    type="text"
-                    value="Mitra"
-                    disabled
-                    className="w-full px-4 py-3 text-base rounded-lg border border-gray-300 
-               focus:border-gray-400 focus:ring-4 focus:ring-gray-100 
-               focus:outline-none transition-all bg-white text-gray-900"
-                  />
-                </div>
-
-                {/* Submit Button */}
+                {/* BUTTON SUBMIT */}
                 <button
-                  onClick={handleSubmit}
+                  type="submit"
                   disabled={isLoading}
-                  className="w-full py-3 rounded-lg bg-gray-900 text-white text-base font-semibold hover:bg-gray-800 active:bg-gray-950 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-3 rounded-lg bg-gray-900 text-white font-semibold"
                 >
-                  {isLoading ? (
-                    <span className="flex items-center justify-center gap-2">
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                      Mendaftar...
-                    </span>
-                  ) : (
-                    "Daftar Sekarang"
-                  )}
+                  {isLoading ? "Mendaftar..." : "Daftar Sekarang"}
                 </button>
-              </div>
+              </form>
 
               {/* Sign In */}
               <div className="pt-6 border-t border-gray-200">
