@@ -4,6 +4,8 @@ import { Mail, ArrowLeft } from "lucide-react";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../../../src/database/firebase";
 import { showToastTopRight } from "../../../../src/utils/alertUtils";
+import { ref, get } from "firebase/database";
+import { db } from "../../../../src/database/firebase";
 
 const LupaPassword = () => {
   const navigate = useNavigate();
@@ -11,7 +13,6 @@ const LupaPassword = () => {
   const [isLoading, setIsLoading] = useState(false);
   const lottieRef = useRef(null);
 
-  // Load Lottie
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
@@ -22,7 +23,6 @@ const LupaPassword = () => {
     return () => document.head.removeChild(script);
   }, []);
 
-  // Load font
   useEffect(() => {
     const link = document.createElement("link");
     link.href =
@@ -33,7 +33,6 @@ const LupaPassword = () => {
     return () => document.head.removeChild(link);
   }, []);
 
-  // Validasi
   const validateForm = () => {
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
       showToastTopRight("error", "Format email tidak valid");
@@ -42,7 +41,6 @@ const LupaPassword = () => {
     return true;
   };
 
-  // Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -51,21 +49,22 @@ const LupaPassword = () => {
     setIsLoading(true);
 
     try {
-      const cleanedEmail = email.trim();
+      const cleanedEmail = email.trim().toLowerCase();
 
       const actionCodeSettings = {
         url: `${window.location.origin}/`,
         handleCodeInApp: false,
       };
 
+      // Kirim email reset password
       await sendPasswordResetEmail(auth, cleanedEmail, actionCodeSettings);
 
       showToastTopRight(
         "success",
-        `Jika ${cleanedEmail} terdaftar, link reset password sudah dikirim.`
+        `Link reset password sudah dikirim ke ${cleanedEmail}.`
       );
     } catch (err) {
-      console.error("Error reset password:", err);
+      console.error("RESET ERROR:", err);
 
       let errorMessage = "Gagal mengirim link reset password.";
 
@@ -73,12 +72,14 @@ const LupaPassword = () => {
         errorMessage = "Email tidak terdaftar.";
       } else if (err.code === "auth/invalid-email") {
         errorMessage = "Format email tidak valid.";
+      } else if (err.code === "auth/missing-email") {
+        errorMessage = "Email wajib diisi.";
       } else if (
         err.code === "auth/missing-continue-uri" ||
         err.code === "auth/invalid-continue-uri"
       ) {
         errorMessage =
-          "Konfigurasi reset password Firebase belum benar. Cek Authorized Domains.";
+          "Konfigurasi Auth belum benar. Tambahkan domain ke Authorized Domains.";
       }
 
       showToastTopRight("error", errorMessage);

@@ -42,14 +42,6 @@ const verifyUserStatus = (user) => {
     return { ok: false, type: "error", msg: "Data pengguna tidak ditemukan" };
   }
 
-  if (user.verified === false) {
-    return {
-      ok: false,
-      type: "warning",
-      msg: "Akun Anda masih menunggu verifikasi admin. Mohon tunggu persetujuan.",
-    };
-  }
-
   if (user.userable_type !== "mitra") {
     return {
       ok: false,
@@ -208,7 +200,7 @@ const Login = () => {
               background="transparent"
               speed="1"
               style={{ width: "100%", height: "550px" }}
-              loop
+              loop="true"
               autoplay
             ></dotlottie-player>
           </div>
@@ -225,7 +217,7 @@ const Login = () => {
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {/* EMAIL */}
                 <div className="space-y-2">
                   <label className="text-base font-medium text-gray-700">
@@ -243,15 +235,10 @@ const Login = () => {
                         errors.email
                           ? "border-red-300 focus:border-red-400 focus:ring-red-100"
                           : "border-gray-300 focus:border-gray-400 focus:ring-gray-100"
-                      } focus:outline-none focus:ring-4 transition-all`}
+                      }`}
                       placeholder="nama@email.com"
                     />
                   </div>
-                  {errors.email && (
-                    <p className="text-red-600 text-sm flex gap-1 items-center mt-1">
-                      <AlertCircle className="w-4 h-4" /> {errors.email}
-                    </p>
-                  )}
                 </div>
 
                 {/* PASSWORD */}
@@ -271,9 +258,10 @@ const Login = () => {
                         errors.password
                           ? "border-red-300 focus:border-red-400 focus:ring-red-100"
                           : "border-gray-300 focus:border-gray-400 focus:ring-gray-100"
-                      } focus:outline-none focus:ring-4 transition-all`}
-                      placeholder="••••••••"
+                      }`}
+                      placeholder="•••••••"
                     />
+
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
@@ -287,17 +275,11 @@ const Login = () => {
                       )}
                     </button>
                   </div>
-
-                  {errors.password && (
-                    <p className="text-red-600 text-sm flex gap-1 items-center mt-1">
-                      <AlertCircle className="w-4 h-4" /> {errors.password}
-                    </p>
-                  )}
                 </div>
 
                 {/* INGAT SAYA */}
                 <div className="flex items-center justify-between pt-2">
-                  <label className="flex items-center gap-2 text-base text-gray-600 cursor-pointer hover:text-gray-900 transition-colors">
+                  <label className="flex items-center gap-2 text-base text-gray-600 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={remember}
@@ -312,17 +294,17 @@ const Login = () => {
                     type="button"
                     onClick={() => navigate("/lupapassword")}
                     disabled={isLoading}
-                    className="text-base text-gray-600 hover:text-gray-900 font-medium transition-colors"
+                    className="text-base text-gray-600 hover:text-gray-900 font-medium"
                   >
                     Lupa password?
                   </button>
                 </div>
 
-                {/* BUTTON */}
+                {/* BUTTON SUBMIT */}
                 <button
-                  onClick={handleSubmit}
+                  type="submit"
                   disabled={isLoading}
-                  className="w-full py-3 rounded-lg bg-gray-900 text-white text-base font-semibold hover:bg-gray-800 transition-colors shadow-sm disabled:opacity-50"
+                  className="w-full py-3 rounded-lg bg-gray-900 text-white text-base font-semibold hover:bg-gray-800 shadow-sm disabled:opacity-50"
                 >
                   {isLoading ? (
                     <span className="flex items-center justify-center gap-2">
@@ -333,7 +315,7 @@ const Login = () => {
                     "Masuk"
                   )}
                 </button>
-              </div>
+              </form>
 
               <div className="pt-6 border-t border-gray-200">
                 <p className="text-center text-base text-gray-600">

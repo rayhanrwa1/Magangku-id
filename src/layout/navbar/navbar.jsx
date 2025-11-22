@@ -39,7 +39,7 @@ function Navbar({
 
   return (
     <AppBar
-      className="pt-2"
+      className="pt-4"
       position="static"
       elevation={0}
       color="inherit"
