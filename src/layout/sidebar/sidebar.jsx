@@ -50,9 +50,12 @@ function Sidebar({ activeKey }) {
   const handleLogout = async () => {
     try {
       await auth.signOut();
-      sessionStorage.clear();
+
+
       localStorage.clear();
-      navigate("/");
+      sessionStorage.clear();
+
+      navigate("/", { replace: true });
     } catch (err) {
       console.error("Logout error:", err);
     }

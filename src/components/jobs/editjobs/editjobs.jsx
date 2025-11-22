@@ -218,6 +218,7 @@ export default function EditJob() {
                   <div className="relative">
                     <Briefcase
                       size={18}
+                      color="grey"
                       className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
                     />
                     <input
@@ -242,6 +243,7 @@ export default function EditJob() {
                   <div className="relative">
                     <Building
                       size={18}
+                      color="grey"
                       className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
                     />
                     <input
@@ -271,6 +273,7 @@ export default function EditJob() {
                   <div className="relative">
                     <Location
                       size={18}
+                      color="grey"
                       className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
                     />
                     <input
@@ -297,6 +300,7 @@ export default function EditJob() {
                   <div className="relative">
                     <Global
                       size={18}
+                      color="grey"
                       className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
                     />
                     <select
@@ -447,6 +451,7 @@ export default function EditJob() {
                   <div className="relative">
                     <Clock
                       size={18}
+                      color="grey"
                       className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
                     />
                     <input
