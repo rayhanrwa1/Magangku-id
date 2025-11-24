@@ -9,6 +9,7 @@ import Createjob from "./pages/jobs/createjob";
 import Job from "./pages/jobs/jobs";
 import DetailJobs from "./pages/jobs/jobdetail";
 import EditJobPage from "./pages/jobs/editjob";
+import Chat from "./pages/chat";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/jobs" element={<Job />} />
         <Route path="/jobs/:id" element={<DetailJobs />} />
         <Route path="/jobs/:id/edit" element={<EditJobPage />} />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </BrowserRouter>
   );

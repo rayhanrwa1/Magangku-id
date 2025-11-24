@@ -16,6 +16,7 @@ import {
   Profile2User,
   Logout,
   HambergerMenu,
+  Message,
 } from "iconsax-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../../../src/database/firebase";
@@ -25,6 +26,7 @@ const menuItems = [
   { key: "dashboard", label: "Dashboard", icon: Category, path: "/home" },
   { key: "jobs", label: "Kelola Lowongan", icon: Briefcase, path: "/jobs" },
   { key: "review", label: "Review Pelamar", icon: Profile2User, path: "#" },
+  { key: "chat", label: "Chat", icon: Message, path: "/chat" },
 ];
 
 function Sidebar({ activeKey }) {
@@ -50,7 +52,6 @@ function Sidebar({ activeKey }) {
   const handleLogout = async () => {
     try {
       await auth.signOut();
-
 
       localStorage.clear();
       sessionStorage.clear();
