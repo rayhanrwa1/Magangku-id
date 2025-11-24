@@ -24,17 +24,11 @@ Project ini dikembangkan untuk mengimplementasikan desain UI/UX dari Figma menja
 
 ---
 
-## 📄 **Worksheet File**
-
-📁 **Worksheet Project Magangku**  
-👉 `worksheet/worksheet.pdf`
-
----
-
-## 📉 **Low-Fidelity Prototype File**
-
-📁 **Lo-Fi Wireframe Prototype**  
-👉 `wr_lofi/worksheet_lofi.pdf`
+## 📄 **Worksheet & Low-Fidelity Prototype**
+| File                                                     | Deskripsi                        |
+| -------------------------------------------------------- | -------------------------------- |
+| [worksheet/worksheet.pdf](worksheet/worksheet.pdf)       | Worksheet Project Magangku       |
+| [wr_lofi/worksheet_lofi.pdf](wr_lofi/worksheet_lofi.pdf) | Low-Fidelity Wireframe Prototype |
 
 ---
 
