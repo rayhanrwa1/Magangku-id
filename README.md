@@ -1,39 +1,52 @@
-WEB - MAGANGKU
+# **Magangku – Web Application**
 
-Magangku adalah sebuah platform berbasis web yang dirancang untuk membantu mahasiswa dalam mencari dan mendaftar program magang secara lebih mudah dan terstruktur.
-Aplikasi ini menyediakan fitur pencarian lowongan magang, informasi perusahaan, detail posisi yang ditawarkan, serta fitur pendaftaran dan komunikasi antara mahasiswa dan penyedia magang.
+Magangku adalah platform berbasis website yang dirancang untuk membantu mahasiswa dalam mencari, menemukan, dan mendaftar program magang secara mudah dan terstruktur.  
+Aplikasi ini menyediakan fitur pencarian lowongan, detail posisi, chat langsung dengan pihak perusahaan, serta proses pendaftaran yang sederhana dan terintegrasi.  
+Proyek ini dikembangkan untuk mengimplementasikan desain UI/UX dari Figma menjadi aplikasi web fungsional menggunakan React + Vite.
 
-Platform ini dibuat sebagai bagian dari proyek tugas perkuliahan untuk mengimplementasikan desain UI/UX Figma ke dalam aplikasi web yang fungsional.
+---
+
+## **✨ Anggota Tim & Profil Pengembang**
+
+| Kelas | NIM | Nama | Username GitHub |
+|------|------|------|-----------------|
+| R1-B | 202210370311128 | Moh. Ahsan Malik | Yuton1 |
+| RI-B | 202210370311322 | Teguh Tri Saputra | Teguh-TS |
+| RI-B | 202210370311463 | Amalia Ramadhani Putri | amaliiia14 |
+| RI-B | 202210370311470 | Rayhan Rizky Widi A. | rayhanrwa1 |
+| RI-B | 202210370311503 | Farras Sandy Harsoyo | farrassandy14 |
+
+---
+
+## **🎨 Figma Prototype (UI/UX)**  
+🔗 Link Figma: https://www.figma.com/design/UsmYdVXDqo1n9aJGFd5qS2/Halo-Guys?node-id=2-2&t=pRUOPFhz2fNqILnQ-1  
+
+---
+
+| File                                                                                                                         | Description                |
+| ---------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| [worksheet/B-2022_128-2022_322-2022_463-2022_470-2022_503.pdf](worksheet/B-2022_128-2022_322-2022_463-2022_470-2022_503.pdf) | Worksheet Project Magangku |
+| File                                                                                                                                                                 | Description               |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| [lowfi/B-2022_128-2022_322-2022_463-2022_470-2022_503-8-15 (Low Fidelity).pdf](lowfi/B-2022_128-2022_322-2022_463-2022_470-2022_503-8-15%20%28Low%20Fidelity%29.pdf) | Lo-Fi Wireframe Prototype |
 
 
+## **📝 Tabel Pembagian Tugas (Backlog Tiap Anggota)**
 
-## Anggota Tim :
-1. Moh. Ahsan Malik (202210370311128)
-2. Teguh Tri Saputra. (202210370311322)
-3. ⁠Amalia Ramadhani P. (202210370311463)
-4. Rayhan Rizky Widi A. (202210370311470)
-5. Farras Sandy Harsoyo (202210370311503)
+### **Sprint Backlog – Magangku Web**
 
+| Task | Deskripsi | PIC | Level |
+|------|-----------|-----|--------|
+| Setup Project | Setup React + Vite, struktur folder | Ahsan | Done |
+| Desain UI ke Code | Konversi halaman Landing Page dari Figma | Amalia | In Progress |
+| Routing & Layouting | Setup Router, Layout Main, Navbar, Footer | Teguh | In Progress |
+| Page Lowongan | Implementasi daftar lowongan + filtering | Rayhan | To Do |
+| Page Detail Lowongan | Menampilkan detail job & perusahaan | Farras | To Do |
+| Form Pendaftaran | Form apply magang + validasi | Amalia | To Do |
+| API Dummy | Fetch data lowongan dari JSON/API lokal | Ahsan | To Do |
+| Responsive Design | Optimasi mobile & tablet | Semua | On Going |
+| Testing UI | Validasi, error handling | Tim | On Going |
+| Deployment | Deploy ke Vercel / Netlify | Teguh | To Do |
 
+---
 
-
-
-
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
