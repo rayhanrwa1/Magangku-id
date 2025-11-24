@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer className="bg-white border-t mt-10 font-poppins">
@@ -23,15 +25,24 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-x-10 gap-y-2">
 
             <div className="space-y-2">
-              <a href="#" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">Beranda</a>
-              <a href="#" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">Lowongan</a>
+              <Link to="/" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">
+                Beranda
+              </Link>
+
+              <Link to="/lowongan" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">
+                Lowongan
+              </Link>
             </div>
 
             <div className="space-y-2">
-              <a href="#" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">Tentang Kami</a>
-              <a href="#" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">Panduan</a>
-            </div>
+              <Link to="/tentang_kami" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">
+                Tentang Kami
+              </Link>
 
+              <Link to="/panduan" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">
+                Panduan
+              </Link>
+            </div>
           </div>
         </div>
       </div>
