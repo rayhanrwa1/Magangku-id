@@ -11,7 +11,7 @@ Project ini dikembangkan untuk mengimplementasikan desain UI/UX dari Figma menja
 
 | Kelas | NIM | Nama | Username GitHub |
 |-------|--------------------|---------------------------|-----------------|
-| R1-B | 202210370311128 | Moh. Ahsan Malik | Yuton1 |
+| RI-B | 202210370311128 | Moh. Ahsan Malik | Yuton1 |
 | RI-B | 202210370311322 | Teguh Tri Saputra | Teguh-TS |
 | RI-B | 202210370311463 | Amalia Ramadhani Putri | amaliiia14 |
 | RI-B | 202210370311470 | Rayhan Rizky Widi A. | rayhanrwa1 |
