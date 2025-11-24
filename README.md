@@ -1,52 +1,137 @@
-# **Magangku – Web Application**
+# 🌐 **Magangku -- Web Application**
 
-Magangku adalah platform berbasis website yang dirancang untuk membantu mahasiswa dalam mencari, menemukan, dan mendaftar program magang secara mudah dan terstruktur.  
-Aplikasi ini menyediakan fitur pencarian lowongan, detail posisi, chat langsung dengan pihak perusahaan, serta proses pendaftaran yang sederhana dan terintegrasi.  
-Proyek ini dikembangkan untuk mengimplementasikan desain UI/UX dari Figma menjadi aplikasi web fungsional menggunakan React + Vite.
+Magangku adalah platform berbasis website yang dirancang untuk membantu
+mahasiswa dalam mencari, menemukan, dan mendaftar program magang secara
+mudah dan terstruktur.\
+Aplikasi ini menyediakan fitur pencarian lowongan, detail posisi, chat
+langsung dengan pihak perusahaan, serta proses pendaftaran yang
+sederhana dan terintegrasi.
 
----
+Project ini dikembangkan untuk mengimplementasikan desain UI/UX Figma
+menjadi aplikasi web fungsional menggunakan **React + Vite + Tailwind
+CSS**.
 
-## **✨ Anggota Tim & Profil Pengembang**
+------------------------------------------------------------------------
 
-| Kelas | NIM | Nama | Username GitHub |
-|------|------|------|-----------------|
-| R1-B | 202210370311128 | Moh. Ahsan Malik | Yuton1 |
-| RI-B | 202210370311322 | Teguh Tri Saputra | Teguh-TS |
-| RI-B | 202210370311463 | Amalia Ramadhani Putri | amaliiia14 |
-| RI-B | 202210370311470 | Rayhan Rizky Widi A. | rayhanrwa1 |
-| RI-B | 202210370311503 | Farras Sandy Harsoyo | farrassandy14 |
+## 👥 **Anggota Tim & Profil Pengembang**
 
----
+  Kelas   NIM               Nama                     Username GitHub
+  ------- ----------------- ------------------------ -----------------
+  R1-B    202210370311128   Moh. Ahsan Malik         Yuton1
+  RI-B    202210370311322   Teguh Tri Saputra        Teguh-TS
+  RI-B    202210370311463   Amalia Ramadhani Putri   amaliiia14
+  RI-B    202210370311470   Rayhan Rizky Widi A.     rayhanrwa1
+  RI-B    202210370311503   Farras Sandy Harsoyo     farrassandy14
 
-## **🎨 Figma Prototype (UI/UX)**  
-🔗 Link Figma: https://www.figma.com/design/UsmYdVXDqo1n9aJGFd5qS2/Halo-Guys?node-id=2-2&t=pRUOPFhz2fNqILnQ-1  
+------------------------------------------------------------------------
 
----
+## 🎨 **Figma Prototype (UI/UX)**
 
-| File                                                                                                                         | Description                |
-| ---------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| [worksheet/B-2022_128-2022_322-2022_463-2022_470-2022_503.pdf](worksheet/B-2022_128-2022_322-2022_463-2022_470-2022_503.pdf) | Worksheet Project Magangku |
-| File                                                                                                                                                                 | Description               |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
-| [lowfi/B-2022_128-2022_322-2022_463-2022_470-2022_503-8-15 (Low Fidelity).pdf](lowfi/B-2022_128-2022_322-2022_463-2022_470-2022_503-8-15%20%28Low%20Fidelity%29.pdf) | Lo-Fi Wireframe Prototype |
+🔗
+https://www.figma.com/design/UsmYdVXDqo1n9aJGFd5qS2/Halo-Guys?node-id=2-2&t=pRUOPFhz2fNqILnQ-1
 
+------------------------------------------------------------------------
 
-## **📝 Tabel Pembagian Tugas (Backlog Tiap Anggota)**
+## 📄 **Worksheet File**
 
-### **Sprint Backlog – Magangku Web**
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  File                                                                                                                           Description
+  ------------------------------------------------------------------------------------------------------------------------------ ------------------------------------------------
+  [worksheet/B-2022_128-2022_322-2022_463-2022_470-2022_503.pdf](worksheet/B-2022_128-2022_322-2022_463-2022_470-2022_503.pdf)   Worksheet Project Magangku
 
-| Task | Deskripsi | PIC | Level |
-|------|-----------|-----|--------|
-| Setup Project | Setup React + Vite, struktur folder | Ahsan | Done |
-| Desain UI ke Code | Konversi halaman Landing Page dari Figma | Amalia | In Progress |
-| Routing & Layouting | Setup Router, Layout Main, Navbar, Footer | Teguh | In Progress |
-| Page Lowongan | Implementasi daftar lowongan + filtering | Rayhan | To Do |
-| Page Detail Lowongan | Menampilkan detail job & perusahaan | Farras | To Do |
-| Form Pendaftaran | Form apply magang + validasi | Amalia | To Do |
-| API Dummy | Fetch data lowongan dari JSON/API lokal | Ahsan | To Do |
-| Responsive Design | Optimasi mobile & tablet | Semua | On Going |
-| Testing UI | Validasi, error handling | Tim | On Going |
-| Deployment | Deploy ke Vercel / Netlify | Teguh | To Do |
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
----
+------------------------------------------------------------------------
 
+## 📉 **Low-Fidelity Prototype File**
+
+  ---------------------------------------------------------------------------------------------------------------------------------------------------
+  File                                                                                               Description
+  -------------------------------------------------------------------------------------------------- ------------------------------------------------
+  [lowfi/B-2022_128-2022_322-2022_463-2022_470-2022_503-8-15 (Low                                    Lo-Fi Wireframe Prototype
+  Fidelity).pdf](lowfi/B-2022_128-2022_322-2022_463-2022_470-2022_503-8-15%20(Low%20Fidelity).pdf)   
+
+  ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+# 🧩 **Pembagian Fitur & Tanggung Jawab**
+
+## 🔵 **Fitur Mitra**
+
+  Fitur                       Deskripsi                       PIC
+  --------------------------- ------------------------------- --------
+  Login Mitra                 Halaman login akun perusahaan   Rayhan
+  Register Mitra              Registrasi akun perusahaan      Farras
+  Lupa Password Mitra         Reset password                  Farras
+  Profile CRUD                Kelola data profil perusahaan   Rayhan
+  Settings                    Pengaturan akun mitra           Rayhan
+  Change Password             Ubah password akun              Farras
+  Dashboard Home Mitra        Halaman utama mitra             Rayhan
+  Manajemen Lowongan (CRUD)   Tambah, edit, hapus lowongan    Farras
+  Aplikasi Masuk              Melihat & memproses lamaran     Farras
+  Chat Mitra                  Komunikasi ke mahasiswa         Rayhan
+
+------------------------------------------------------------------------
+
+## 🟢 **Fitur User**
+
+  Fitur              Deskripsi                              PIC
+  ------------------ -------------------------------------- -----------------
+  Login User         Autentikasi mahasiswa                  Malik
+  Register User      Form registrasi mahasiswa              Malik
+  Halaman Lowongan   List lowongan & filtering              Amalia
+  Detail Lowongan    Menampilkan detail job                 Amalia
+  Apply Magang       Form apply + upload dokumen            Amalia, Malik, Teguh
+  Profile User       Edit biodata user                      Teguh
+  Chat User          Mahasiswa berkomunikasi dengan mitra   Rayhan
+  Panduan            Berisi panduan pemakaian               Teguh
+
+------------------------------------------------------------------------
+
+## 🛠️ **Tech Stack**
+
+-   React + Vite\
+-   Tailwind CSS\
+-   Firebase Realtime Database\
+-   Firebase Authentication\
+-   React Router\
+-   GitHub Collaboration
+
+------------------------------------------------------------------------
+
+## 📂 **Struktur Folder Project**
+
+    magangku/
+    │
+    ├── lowfi/
+    │   └── <file-lowfi>.pdf
+    │
+    ├── worksheet/
+    │   └── <file-worksheet>.pdf
+    │
+    ├── public/
+    ├── src/
+    │   ├── assets/
+    │   ├── components/
+    │   ├── common/
+    │   ├── layout/
+    │   ├── pages/
+    │   ├── sections/
+    │   ├── services/
+    │   ├── utils/
+    │   └── database/
+    │
+    └── README.md
+
+------------------------------------------------------------------------
+
+## 🚀 **Cara Menjalankan Project**
+
+``` bash
+npm install
+npm run dev
+```
+
+Akses aplikasi di:\
+👉 http://localhost:5173/
