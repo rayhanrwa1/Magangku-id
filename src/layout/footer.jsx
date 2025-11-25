@@ -53,13 +53,16 @@ export default function Footer() {
           <p>© 2025 Magangku. All rights reserved.</p>
 
           <div className="flex gap-6">
-            <a href="#" className="hover:underline">Pusat Privasi</a>
-            <a href="#" className="hover:underline">Syarat dan Ketentuan</a>
+            <Link to="/pusat_privasi" className="hover:underline">
+              Pusat Privasi
+            </Link>
+
+            <Link to="/syarat_ketentuan" className="hover:underline">
+              Syarat dan Ketentuan
+            </Link>
           </div>
         </div>
-
       </div>
-
     </footer>
   );
 }

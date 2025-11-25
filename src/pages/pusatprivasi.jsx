@@ -1,16 +1,16 @@
 import Wrapper from "../layout/wrapper";
 import SEO from "../common/seo";
-import Tentang_Kami from "../components/tentang_kami/index"
+import Pusat_Privasi from "../components/pusat_privasi"
 
 const Index = () => {
   return (
     <Wrapper>
       <SEO
-        title="Tentang Kami"
+        title="Pusat Privasi"
         description="Temukan lowongan magang terbaik di Magangku."
         keywords="magang, internship, mahasiswa, perusahaan"
       />
-      <Tentang_Kami />
+      <Pusat_Privasi />
     </Wrapper>
   );
 };

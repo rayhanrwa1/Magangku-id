@@ -7,7 +7,7 @@ const VisiMisi = () => {
       }}
     >
 
-      <div className="absolute inset-0 bg-gradient-to-b from-[#EB0081]/75 to-[#0D2058]/75"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#EB0081]/60 to-[#0D2058]/60"></div>
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-14 text-white">
         <div>
           <h2 className="text-3xl text-center font-bold mb-5 underline decoration-white decoration-2">
@@ -25,7 +25,7 @@ const VisiMisi = () => {
           <h2 className="text-3xl text-center font-bold mb-5 underline decoration-white decoration-2">
             Misi:
           </h2>
-          <p className="text-[18px] leading-relaxed text-justify whitespace-normal font-light font-poppins">
+          <p className="text-[18px] leading-relaxed text-justify whitespace-normal font-light file:font-poppins">
             Menjembatani kesenjangan keterampilan dengan menghubungkan talenta
             muda dengan magang terverifikasi di BUMN dan Perusahaan
             Multinasional. Kami memfasilitasi pengalaman kerja profesional dan

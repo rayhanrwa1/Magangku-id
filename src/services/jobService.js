@@ -22,18 +22,26 @@ export async function getAllJobs() {
     const finalJobs = [];
 
     for (let job of jobList) {
-      let mitraData = null;
 
-      if (job.mitra_id) {
-        const mitraSnap = await get(child(dbRef, `mitra/${job.mitra_id}`));
-        mitraData = mitraSnap.exists() ? mitraSnap.val() : null;
-      }
+  // Normalisasi required_documents jadi array ALWAYS
+  job.required_documents = Array.isArray(job.required_documents)
+    ? job.required_documents
+    : typeof job.required_documents === "string"
+    ? job.required_documents.split(",").map((s) => s.trim())
+    : [];
 
-      finalJobs.push({
-        ...job,
-        mitra: mitraData,
-      });
-    }
+  let mitraData = null;
+
+  if (job.mitra_id) {
+    const mitraSnap = await get(child(dbRef, `mitra/${job.mitra_id}`));
+    mitraData = mitraSnap.exists() ? mitraSnap.val() : null;
+  }
+
+  finalJobs.push({
+    ...job,
+    mitra: mitraData,
+  });
+}
 
     return finalJobs;
 
