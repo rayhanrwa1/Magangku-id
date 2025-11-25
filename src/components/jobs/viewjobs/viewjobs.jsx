@@ -30,7 +30,7 @@ export default function ViewJob() {
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
-      if (!user) return (window.location.href = "/login");
+      if (!user) return (window.location.href = "/");
 
       try {
         // Get mitra data
@@ -115,7 +115,7 @@ export default function ViewJob() {
       <Sidebar activeKey="jobs" />
 
       <div className="flex-1 flex flex-col min-w-0">
-        <Navbar mitraName={mitraData?.name} mitraEmail={userData?.email} />
+        <Navbar mitraPhoto={mitraData?.photo} mitraName={mitraData?.name} mitraEmail={userData?.email} />
 
         <main className="p-4 md:p-6 lg:p-8 space-y-6">
           {/* Job Detail Card */}

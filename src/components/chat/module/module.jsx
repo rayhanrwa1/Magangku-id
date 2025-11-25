@@ -407,6 +407,7 @@ export default function ChatPage() {
 
       <div className="flex-1 flex flex-col">
         <Navbar
+          mitraPhoto={mitraData?.photo}
           mitraName={mitraData?.name || "Nama Perusahaan Belum Diisi"}
           mitraEmail={userData?.email || "Memuat..."}
         />
