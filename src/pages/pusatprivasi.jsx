@@ -6,7 +6,7 @@ const Index = () => {
   return (
     <Wrapper>
       <SEO
-        title="Lowongan"
+        title="Pusat Privasi"
         description="Temukan lowongan magang terbaik di Magangku."
         keywords="magang, internship, mahasiswa, perusahaan"
       />
