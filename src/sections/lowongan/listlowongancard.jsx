@@ -30,7 +30,7 @@ export default function ListLowongan() {
             <JobListCard
               image={job.mitra?.photo || "/img/default.png"}
               company={job.mitra?.name}
-              position={job.category}
+              position={job.title}
               lokasi={`${job.mitra?.address}, ${job.mitra?.city}`}
               info={job.status}
               detail={job.required_documents || []}
