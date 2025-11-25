@@ -24,7 +24,7 @@ function Profile() {
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
       if (!user) {
-        window.location.href = "/login";
+        window.location.href = "/";
         return;
       }
 
@@ -103,12 +103,12 @@ function Profile() {
   // Tampilan profil
   return (
     <div className="min-h-screen flex bg-slate-50">
-      <div className="hidden md:block">
         <Sidebar activeKey="profile" />
-      </div>
+  
 
       <div className="flex-1 flex flex-col">
         <Navbar
+          mitraPhoto={mitraData?.photo}
           mitraName={mitraData?.name || "Nama Perusahaan"}
           mitraEmail={userData?.email || "Memuat..."}
         />
