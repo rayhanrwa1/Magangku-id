@@ -1,39 +1,114 @@
-WEB - MAGANGKU
+# 🌐 **Magangku — Web Application**
 
-Magangku adalah sebuah platform berbasis web yang dirancang untuk membantu mahasiswa dalam mencari dan mendaftar program magang secara lebih mudah dan terstruktur.
-Aplikasi ini menyediakan fitur pencarian lowongan magang, informasi perusahaan, detail posisi yang ditawarkan, serta fitur pendaftaran dan komunikasi antara mahasiswa dan penyedia magang.
+Magangku adalah platform berbasis website yang dirancang untuk membantu mahasiswa dalam mencari, menemukan, dan mendaftar program magang secara mudah dan terstruktur.  
+Aplikasi ini menyediakan fitur pencarian lowongan, detail posisi, chat langsung dengan perusahaan, serta proses pendaftaran yang sederhana dan terintegrasi.
 
-Platform ini dibuat sebagai bagian dari proyek tugas perkuliahan untuk mengimplementasikan desain UI/UX Figma ke dalam aplikasi web yang fungsional.
+Project ini dikembangkan untuk mengimplementasikan desain UI/UX dari Figma menjadi aplikasi web fungsional menggunakan **React + Vite + Tailwind CSS**.
 
+---
 
+## 👥 **Anggota Tim & Profil Pengembang**
 
-## Anggota Tim :
-1. Moh. Ahsan Malik (202210370311128)
-2. Teguh Tri Saputra. (202210370311322)
-3. ⁠Amalia Ramadhani P. (202210370311463)
-4. Rayhan Rizky Widi A. (202210370311470)
-5. Farras Sandy Harsoyo (202210370311503)
+| Kelas | NIM | Nama | Username GitHub |
+|-------|--------------------|---------------------------|-----------------|
+| RI-B | 202210370311128 | Moh. Ahsan Malik | Yuton1 |
+| RI-B | 202210370311322 | Teguh Tri Saputra | Teguh-TS |
+| RI-B | 202210370311463 | Amalia Ramadhani Putri | amaliiia14 |
+| RI-B | 202210370311470 | Rayhan Rizky Widi A. | rayhanrwa1 |
+| RI-B | 202210370311503 | Farras Sandy Harsoyo | farrassandy14 |
 
+---
 
+## 🎨 **Figma Prototype (UI/UX)**  
+🔗 https://www.figma.com/design/UsmYdVXDqo1n9aJGFd5qS2/Halo-Guys?node-id=2-2&t=pRUOPFhz2fNqILnQ-1  
 
+---
 
+## 📄 **Worksheet & Low-Fidelity Prototype**
+| File                                                     | Deskripsi                        |
+| -------------------------------------------------------- | -------------------------------- |
+| [worksheet/worksheet.pdf](worksheet/worksheet.pdf)       | Worksheet Project Magangku       |
+| [wr_lofi/worksheet_lofi.pdf](wr_lofi/worksheet_lofi.pdf) | Low-Fidelity Wireframe Prototype |
 
+---
 
-# React + Vite
+# 🧩 **Pembagian Fitur & Tanggung Jawab**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🔵 **Fitur Mitra**
 
-Currently, two official plugins are available:
+| Fitur | Deskripsi | PIC |
+|-------|-----------|------|
+| Login Mitra | Halaman login akun perusahaan | Rayhan |
+| Register Mitra | Registrasi akun perusahaan | Farras |
+| Lupa Password Mitra | Reset password | Farras |
+| Profile CRUD | Kelola data profil perusahaan | Rayhan |
+| Settings | Pengaturan akun mitra | Rayhan |
+| Change Password | Ubah password akun | Farras |
+| Dashboard Home Mitra | Halaman utama mitra | Rayhan |
+| Manajemen Lowongan (CRUD) | Tambah, edit, hapus lowongan | Farras |
+| Aplikasi Masuk | Melihat & memproses lamaran | Farras |
+| Chat Mitra | Komunikasi ke mahasiswa | Rayhan |
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🟢 **Fitur User**
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+| Fitur | Deskripsi | PIC |
+|--------|-----------|------|
+| Login User | Autentikasi mahasiswa | Malik |
+| Register User | Form registrasi mahasiswa | Malik |
+| Halaman Lowongan | List lowongan & filtering | Amalia |
+| Detail Lowongan | Menampilkan detail job | Amalia |
+| Apply Magang | Form apply + upload dokumen | Amalia, Malik, Teguh |
+| Profile User | Edit biodata user | Teguh |
+| Chat User | Mahasiswa berkomunikasi dengan mitra | Rayhan |
+| Panduan | Berisi panduan pemakaian | Teguh |
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the ESLint configuration
+## 🛠️ **Tech Stack**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React + Vite  
+- Tailwind CSS  
+- Firebase Realtime Database  
+- Firebase Authentication  
+- React Router  
+- GitHub Collaboration  
+
+---
+
+## 📂 **Struktur Folder Project**
+
+```
+magangku/
+│
+├── wr_lofi/
+│   └── <file-lowfi>.pdf
+│
+├── worksheet/
+│   └── <file-worksheet>.pdf
+│
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── common/
+│   ├── layout/
+│   ├── pages/
+│   ├── sections/
+│   ├── services/
+│   ├── utils/
+│   └── database/
+│
+└── README.md
+```
+
+---
+
+## 🚀 **Cara Menjalankan Project**
+
+```bash
+npm install
+npm run dev
+```
+

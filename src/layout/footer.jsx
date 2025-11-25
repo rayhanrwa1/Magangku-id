@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer className="bg-white border-t mt-10 font-poppins">
@@ -21,12 +23,22 @@ export default function Footer() {
           <h3 className="font-bold mb-3">Halaman</h3>
           <div className="grid grid-cols-2 gap-x-6 md:gap-x-10 gap-y-2">
             <div className="space-y-2">
-              <a href="#" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">Beranda</a>
-              <a href="#" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">Lowongan</a>
+              <Link to="/" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">
+                Beranda
+              </Link>
+
+              <Link to="/lowongan" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">
+                Lowongan
+              </Link>
             </div>
             <div className="space-y-2">
-              <a href="#" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">Tentang Kami</a>
-              <a href="#" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">Panduan</a>
+              <Link to="/tentang_kami" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">
+                Tentang Kami
+              </Link>
+
+              <Link to="/panduan" className="block text-[14px] text-[#636363] font-medium hover:text-[#00144F]">
+                Panduan
+              </Link>
             </div>
           </div>
         </div>
@@ -34,11 +46,18 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="w-full bg-gradient-to-r from-[#EB0081] to-[#0D2058]">
-        <div className="max-w-screen-xl mx-auto py-3 px-4 md:px-6 flex flex-col md:flex-row items-center justify-between text-white text-[13px]">
-          <p className="mb-2 md:mb-0">© 2025 Magangku. All rights reserved.</p>
-          <div className="flex gap-3 md:gap-6">
-            <a href="#" className="hover:underline">Pusat Privasi</a>
-            <a href="#" className="hover:underline">Syarat dan Ketentuan</a>
+
+        <div className="max-w-screen-xl mx-auto py-3 px-6 flex justify-between text-white text-[13px]">
+          <p>© 2025 Magangku. All rights reserved.</p>
+
+          <div className="flex gap-6">
+            <Link to="/pusat_privasi" className="hover:underline">
+              Pusat Privasi
+            </Link>
+
+            <Link to="/syarat_ketentuan" className="hover:underline">
+              Syarat dan Ketentuan
+            </Link>
           </div>
         </div>
       </div>
