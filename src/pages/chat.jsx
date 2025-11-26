@@ -1,6 +1,6 @@
 import Wrapper from "../layout/wrapper";
 import SEO from "../common/seo";
-import Chat from "../components/chat/module";
+import Chat from "../components/chat/chat/";
 
 const index = () => {
   return (
