@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { ref, get } from 'firebase/database';
 import { db, auth } from '../../database/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
-
 import Navbar from '../../layout/navbar/navbar';
 import Sidebar from '../../layout/sidebar/sidebar';
 import { useNavigate } from 'react-router-dom';
