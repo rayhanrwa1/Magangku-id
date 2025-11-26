@@ -12,7 +12,7 @@ const Register = () => {
     email: "",
     password: "",
     confirm_password: "",
-    userable_type: "mitra",
+    userable_type: "user",
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -123,7 +123,7 @@ const Register = () => {
         email: "",
         password: "",
         confirm_password: "",
-        userable_type: "mitra",
+        userable_type: "user",
       });
 
       setTimeout(() => navigate("/"), 2000);

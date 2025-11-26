@@ -1,18 +1,120 @@
-# React + Vite
+# 🌐 **Magangku Mitra — Platform Rekrutmen Magang untuk Perusahaan**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Magangku Mitra adalah aplikasi berbasis web yang dirancang khusus untuk perusahaan/mitra dalam mengelola proses rekrutmen magang secara mudah, cepat, dan terstruktur.
 
-Currently, two official plugins are available:
+Aplikasi ini memungkinkan perusahaan untuk:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Membuat dan mengelola lowongan magang
+- Melihat dan memproses lamaran mahasiswa secara real-time
+- Berkomunikasi langsung melalui fitur chat
+- Mengelola profil perusahaan sebagai representasi brand profesional
 
-## React Compiler
+Project ini dikembangkan untuk mengimplementasikan desain UI/UX dari Figma menjadi aplikasi web fungsional menggunakan **React + Vite + Tailwind CSS**.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## 👥 **Anggota Tim & Profil Pengembang**
 
-## Expanding the ESLint configuration
+| Kelas | NIM | Nama | Username GitHub |
+|-------|--------------------|---------------------------|-----------------|
+| RI-B | 202210370311128 | Moh. Ahsan Malik | Yuton1 |
+| RI-B | 202210370311322 | Teguh Tri Saputra | Teguh-TS |
+| RI-B | 202210370311463 | Amalia Ramadhani Putri | amaliiia14 |
+| RI-B | 202210370311470 | Rayhan Rizky Widi A. | rayhanrwa1 |
+| RI-B | 202210370311503 | Farras Sandy Harsoyo | farrassandy14 |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🎨 **Figma Prototype (UI/UX)**  
+🔗 https://www.figma.com/design/UsmYdVXDqo1n9aJGFd5qS2/Halo-Guys?node-id=2-2&t=pRUOPFhz2fNqILnQ-1  
+
+---
+
+## 📄 **Worksheet & Low-Fidelity Prototype**
+| File                                                     | Deskripsi                        |
+| -------------------------------------------------------- | -------------------------------- |
+| [worksheet/worksheet.pdf](docs/worksheet/worksheet.pdf)       | Worksheet Project Magangku       |
+| [wr_lofi/worksheet_lofi.pdf](docs/wr_lofi/worksheet_lofi.pdf) | Low-Fidelity Wireframe Prototype |
+
+---
+
+# 🧩 **Pembagian Fitur & Tanggung Jawab**
+
+## 🔵 **Fitur Mitra**
+
+| Fitur | Deskripsi | PIC |
+|-------|-----------|------|
+| Login Mitra | Halaman login akun perusahaan | Rayhan |
+| Register Mitra | Registrasi akun perusahaan | Farras |
+| Lupa Password Mitra | Reset password | Farras |
+| Profile CRUD | Kelola data profil perusahaan | Rayhan |
+| Settings | Pengaturan akun mitra | Rayhan |
+| Change Password | Ubah password akun | Farras |
+| Dashboard Home Mitra | Halaman utama mitra | Rayhan |
+| Manajemen Lowongan (CRUD) | Tambah, edit, hapus lowongan | Farras |
+| Aplikasi Masuk | Melihat & memproses lamaran | Farras |
+| Chat Mitra | Komunikasi ke mahasiswa | Rayhan |
+
+---
+
+## 🟢 **Fitur User**
+
+| Fitur | Deskripsi | PIC |
+|--------|-----------|------|
+| Login User | Autentikasi mahasiswa | Malik |
+| Register User | Form registrasi mahasiswa | Malik |
+| Halaman Lowongan | List lowongan & filtering | Amalia |
+| Detail Lowongan | Menampilkan detail job | Amalia |
+| Apply Magang | Form apply + upload dokumen | Amalia, Malik, Teguh |
+| Profile User | Edit biodata user | Teguh |
+| Chat User | Mahasiswa berkomunikasi dengan mitra | Rayhan |
+| Panduan | Berisi panduan pemakaian | Teguh |
+
+---
+
+## 🛠️ **Tech Stack**
+
+- React + Vite  
+- Tailwind CSS  
+- Firebase Realtime Database  
+- Firebase Authentication  
+- React Router  
+- GitHub Collaboration  
+
+---
+
+## 📂 **Struktur Folder Project**
+
+```
+magangku/
+│
+├── wr_lofi/
+│   └── <file-lowfi>.pdf
+│
+├── worksheet/
+│   └── <file-worksheet>.pdf
+│
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── common/
+│   ├── layout/
+│   ├── pages/
+│   ├── sections/
+│   ├── services/
+│   ├── utils/
+│   └── database/
+│
+└── README.md
+```
+
+---
+
+## 🚀 **Cara Menjalankan Project**
+
+```bash
+npm install
+npm run dev
+```
+
