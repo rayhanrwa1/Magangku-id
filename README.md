@@ -4,10 +4,10 @@ Magangku Mitra adalah aplikasi berbasis web yang dirancang khusus untuk perusaha
 
 Aplikasi ini memungkinkan perusahaan untuk:
 
-• Membuat dan mengelola lowongan magang
-• Melihat dan memproses lamaran mahasiswa secara real-time
-• Berkomunikasi langsung melalui fitur chat
-• Mengelola profil perusahaan sebagai representasi brand profesional
+- Membuat dan mengelola lowongan magang
+- Melihat dan memproses lamaran mahasiswa secara real-time
+- Berkomunikasi langsung melalui fitur chat
+- Mengelola profil perusahaan sebagai representasi brand profesional
 
 Project ini dikembangkan untuk mengimplementasikan desain UI/UX dari Figma menjadi aplikasi web fungsional menggunakan **React + Vite + Tailwind CSS**.
 
