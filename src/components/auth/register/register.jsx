@@ -10,6 +10,8 @@ import {
   sendEmailVerification,
 } from "firebase/auth";
 
+// Komponen Register
+
 export default function Register() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
