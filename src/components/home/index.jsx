@@ -13,8 +13,8 @@ import { ref, get } from 'firebase/database';
 import { auth, db } from '../../database/firebase';
 
 const Index = () => {
-	const [user, setUser] = useState(null); // data dari Firebase Auth
-	const [userData, setUserData] = useState(null); // data dari Realtime DB
+	const [user, setUser] = useState(null);
+	const [userData, setUserData] = useState(null);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {

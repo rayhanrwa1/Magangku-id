@@ -2,13 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/";
 import Login from "./pages/login";
 import AlertContainer from "./utils/usealert_utils.jsx";
-
 import LowonganPage from "./pages/lowongan";
 import Tentang_Kammi from "./components/tentang_kami";
 import Pusat_Privasi from "./components/pusat_privasi";
 import Register from "./pages/register";
-
-// Halaman milik kamu (dari HEAD)
 import ProfilePage from "./pages/profilepage";
 import PanduanPage from "./pages/panduanpage";
 
