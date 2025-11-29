@@ -15,7 +15,7 @@ const HeaderSearch = ({ onSearch, filterOptions, onApplyFilter}) => {
     duration: []
   });
   const [customInputs, setCustomInputs] = useState({
-    locations: '',
+    locations: '',  
     positions: '',
     workScheme: '',
     duration: ''
