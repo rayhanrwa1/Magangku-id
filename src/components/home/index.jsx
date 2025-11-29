@@ -1,20 +1,17 @@
-// src/components/home/index.jsx
 import { useEffect, useState } from 'react';
 import HeroSection from '../../sections/home/herosection';
 import JobSection from '../../sections/home/jobsection';
 import FaqSection from '../../sections/home/faqsection';
 import Footer from '../../layout/footer';
-
 import Navbar from '../../layout/navbar';
 import NavbarLogin from '../../layout/navbarlogin';
-
 import { onAuthStateChanged } from 'firebase/auth';
 import { ref, get } from 'firebase/database';
 import { auth, db } from '../../database/firebase';
 
 const Index = () => {
-	const [user, setUser] = useState(null); // data dari Firebase Auth
-	const [userData, setUserData] = useState(null); // data dari Realtime DB
+	const [user, setUser] = useState(null);
+	const [userData, setUserData] = useState(null);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
