@@ -31,7 +31,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
                   onClick={() => setActiveTab(item.id)}
                   className={`text-left w-full text-base transition-colors duration-200 ${
                     activeTab === item.id
-                      ? "text-blue-600 font-medium" // Active State
+                      ? "text-blue-600 font-medium" 
                       : "text-gray-600 hover:text-blue-500"
                   }`}
                 >
