@@ -149,7 +149,7 @@ export default function LoginForm() {
 
           <div className="flex justify-end mt-2">
             <a
-              href="#"
+              href="/lupapassword"
               className="text-sm text-[#2563EB] hover:underline font-medium"
             >
               Lupa password?
