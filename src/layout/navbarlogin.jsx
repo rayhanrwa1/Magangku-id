@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../database/firebase";
-import { Alert } from "../utils/usealert_utils";
+import { Alert } from "../utils/usealert_utils.jsx";
 
 export default function NavbarLogin({ user, userData }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
