@@ -1,6 +1,23 @@
+import { useEffect, useState } from "react";
 import JobCard from "../../layout/jobcard";
+import { getAllJobs } from "../../services/jobService";
+import { useNavigate } from "react-router-dom";
 
 const Jobsection = () => {
+  const [jobs, setJobs] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    async function load() {
+      const data = await getAllJobs();
+
+      const sixJobs = data.slice(0, 6);
+
+      setJobs(sixJobs);
+    }
+    load();
+  }, []);
+
   return (
     <section className="px-12 py-16 bg-gradient-to-b from-[#FFFFFF] via-[#F3F3F3] to-[#FFFFFF]">
       <h2 className="text-3xl font-semibold mb-10 text-center font-poppins text-[38px]">
@@ -8,71 +25,28 @@ const Jobsection = () => {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <JobCard
-          image="/img/mandiri.png"
-          company="PT Mandiri Utama Finance"
-          position="Software Quality Assurance"
-          lokasi="Tebet, Jakarta Selatan"
-          tipe="Umum"
-          durasi="5 bulan"
-          skema="WFH"
-          penutupan="28 Agustus 2025"
-        />
+        {jobs.length === 0 && (
+          <p className="text-gray-400 text-center">Memuat data...</p>
+        )}
 
-        <JobCard
-          image="/img/bfi.png"
-          company="PT BFI FINANCE INDONESIA"
-          position="Account Office"
-          lokasi="Kalideres, Jakarta"
-          tipe="Umum"
-          durasi="5 bulan"
-          skema="WFH"
-          penutupan="28 Agustus 2025"
-        />
-
-        <JobCard
-          image="/img/platinum.png"
-          company="PT Platinum Ceramics Industry"
-          position="Management Trainee"
-          lokasi="Lamongan, Jawa Timur"
-          tipe="Umum"
-          durasi="5 bulan"
-          skema="WFH"
-          penutupan="28 Agustus 2025"
-        />
-
-        <JobCard
-          image="/img/ef.png"
-          company="EF English First Swara Group"
-          position="Graphic Designer"
-          lokasi="Tangerang, Banten"
-          tipe="Umum"
-          durasi="5 bulan"
-          skema="WFH"
-          penutupan="28 Agustus 2025"
-        />
-
-        <JobCard
-          image="/img/kimiafarma.png"
-          company="PT Kimia Farma TBK"
-          position="Internship Akuntansi (TJSL) - KFHO"
-          lokasi="Kota Adm. Jakarta Pusat"
-          tipe="Umum"
-          durasi="5 bulan"
-          skema="WFH"
-          penutupan="28 Agustus 2025"
-        />
-
-        <JobCard
-          image="/img/danamon.png"
-          company="PT Bank Danamon Indonesia"
-          position="Bankers Trainee"
-          lokasi="Jakarta Pusat"
-          tipe="Umum"
-          durasi="5 bulan"
-          skema="WFH"
-          penutupan="28 Agustus 2025"
-        />
+        {jobs.map((job) => (
+          <div
+            key={job.id}
+            onClick={() => navigate(`/lowongan/${job.id}`)}
+            className="cursor-pointer"
+          >
+            <JobCard
+              image={job.mitra?.photo || "/img/default.png"}
+              company={job.mitra?.name}
+              position={job.title}
+              lokasi={`${job.mitra?.address}, ${job.mitra?.city}`}
+              tipe={job.status}
+              durasi={job.employment_duration}
+              skema={job.work_type}
+              penutupan={job.deadline}
+            />
+          </div>
+        ))}
       </div>
     </section>
   );

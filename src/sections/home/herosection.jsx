@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const HeroSection = () => {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 items-center px-12 py-20 gap-10">
@@ -11,9 +13,12 @@ const HeroSection = () => {
           dan temukan karier yang paling sesuai untuk Kamu.
         </p>
 
-        <button className="mt-6 px-8 py-3 bg-[#1E3A8A] font-semibold font-poppins text-white rounded-xl">
+        <Link
+          to="/lowongan"
+          className="mt-6 px-8 py-3 bg-[#1E3A8A] font-semibold font-poppins text-white rounded-xl inline-block"
+        >
           Cari Lowongan
-        </button>
+        </Link>
       </div>
 
       <img src="/img/gambarhero.png" alt="Hero" />

@@ -6,6 +6,9 @@ import AlertContainer from "./utils/usealert_utils.jsx";
 import LowonganPage from "./pages/lowongan";
 import Tentang_Kammi from "./components/tentang_kami";
 import Pusat_Privasi from "./components/pusat_privasi";
+
+import Syarat_Ketentuan from "./components/syarat_ketentuan"
+
 import Register from "./pages/register";
 
 // Halaman milik kamu (dari HEAD)
@@ -26,6 +29,7 @@ export default function App() {
         <Route path="/lowongan/:jobId" element={<LowonganPage />} />
         <Route path="/tentang_kami" element={<Tentang_Kammi />} />
         <Route path="/pusat_privasi" element={<Pusat_Privasi />} />
+        <Route path="/syarat_ketentuan" element={<Syarat_Ketentuan />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profil" element={<ProfilePage />} />
         <Route path="/panduan" element={<PanduanPage />} />
