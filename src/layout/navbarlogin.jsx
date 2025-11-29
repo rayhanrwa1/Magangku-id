@@ -1,4 +1,3 @@
-// src/layout/navbarlogin.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
@@ -13,8 +12,8 @@ export default function NavbarLogin({ user, userData }) {
     if (!confirmLogout) return;
 
     try {
-      await signOut(auth);        // hapus session login Firebase
-      navigate("/");              // arahkan ke beranda
+      await signOut(auth);        
+      navigate("/");              
     } catch (error) {
       console.error("Gagal logout:", error);
       alert("Logout gagal. Coba lagi.");
