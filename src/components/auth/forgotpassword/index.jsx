@@ -1,2 +1,2 @@
-import Register from "./forgotpassword";
-export default Register;
+import ForgotPassword from "./forgotpassword";
+export default ForgotPassword;

@@ -5,12 +5,11 @@ import AlertContainer from "./utils/usealert_utils.jsx";
 import LowonganPage from "./pages/lowongan";
 import Tentang_Kammi from "./components/tentang_kami";
 import Pusat_Privasi from "./components/pusat_privasi";
-
-import Syarat_Ketentuan from "./components/syarat_ketentuan"
-
+import Syarat_Ketentuan from "./components/syarat_ketentuan";
 import Register from "./pages/register";
-import ProfilePage from "./pages/profilepage";
-import PanduanPage from "./pages/panduanpage";
+import ProfilePage from "./pages/profile.jsx";
+import PanduanPage from "./pages/panduan.jsx";
+import LupaPassword from "./pages/forgotpassword.jsx";
 
 export default function App() {
   return (
@@ -30,6 +29,7 @@ export default function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profil" element={<ProfilePage />} />
         <Route path="/panduan" element={<PanduanPage />} />
+        <Route path="/lupapassword" element={<LupaPassword />} />
       </Routes>
     </BrowserRouter>
   );

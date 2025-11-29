@@ -1,16 +1,16 @@
 import Wrapper from "../layout/wrapper";
 import SEO from "../common/seo";
-import LupaPassword from "../components/auth/forgotpassword";
+import Profile from "../components/lowongan/index";
 
 const Index = () => {
   return (
     <Wrapper>
       <SEO
-        title="Lupa Password"
+        title="Profile"
         description="Temukan lowongan magang terbaik di Magangku."
         keywords="magang, internship, mahasiswa, perusahaan"
       />
-      <LupaPassword />
+      <Profile />
     </Wrapper>
   );
 };
