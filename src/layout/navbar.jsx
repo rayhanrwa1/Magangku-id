@@ -8,16 +8,16 @@ export default function Navbar() {
       <img src="/img/logo.png" alt="Logo" className="w-40 h-auto" />
       
       <ul className="flex gap-8 text-[#8E8E93]">
-        <li className="cursor-pointer font-poppins text-[20px] hover:text-[#00144F]">
+        <li className="cursor-pointer font-poppins text-[17px] hover:text-[#00144F]">
           <Link to="/">Beranda</Link>
         </li>
 
-        <li className="cursor-pointer font-poppins text-[20px] hover:text-[#00144F]">
+        <li className="cursor-pointer font-poppins text-[17px] hover:text-[#00144F]">
           <Link to="/lowongan">Lowongan</Link>
         </li>
       </ul>
 
-      <button className="px-6 py-2 bg-[#446ED7] text-white font-poppins text-[20px] rounded-full"
+      <button className="px-6 py-2 bg-[#446ED7] text-white font-poppins text-[15px] rounded-full"
         onClick={() => navigate('/login')}
       >
         Masuk

@@ -82,7 +82,7 @@ const JobDetail = () => {
         </div>
 
         <div className="flex flex-col items-end gap-3 mt-2">
-          <button className="px-8 py-3 w-[180px] bg-blue-700 text-white rounded-xl">
+          <button className="px-8 py-3 w-[180px] bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] text-white rounded-xl">
             Daftar Sekarang
           </button>
 
