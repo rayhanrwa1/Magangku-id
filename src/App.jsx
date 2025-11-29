@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/";
 import Login from "./pages/login";
 import AlertContainer from "./utils/usealert_utils.jsx";
-import LowonganPage from "./pages/lowongan";
+import LowonganPage from "./pages/lowongan.jsx";
 import Tentang_Kammi from "./components/tentang_kami";
 import Pusat_Privasi from "./components/pusat_privasi";
 import Syarat_Ketentuan from "./components/syarat_ketentuan";
