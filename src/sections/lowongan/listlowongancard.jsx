@@ -7,6 +7,7 @@ export default function ListLowongan({ searchTerm, filters }) {
   const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
 
+  // === FETCH DATA FIREBASE ===
   useEffect(() => {
     async function load() {
       const data = await getAllJobs();
@@ -15,10 +16,11 @@ export default function ListLowongan({ searchTerm, filters }) {
     load();
   }, []);
 
+  // === FILTER CHECK ===
   const passesFilters = (job) => {
     const locOK =
       filters.locations.length === 0 ||
-      filters.locations.includes(job.mitra?.city?.toLowerCase());
+      filters.locations.includes(job.location?.toLowerCase());
 
     const posOK =
       filters.positions.length === 0 ||
@@ -35,23 +37,27 @@ export default function ListLowongan({ searchTerm, filters }) {
     return locOK && posOK && schemeOK && durationOK;
   };
 
+  // === FILTERED DATA (SEARCH + FILTER) ===
   const filteredJobs = jobs
     .filter((job) => {
       const title = job.title?.toLowerCase() || "";
       const company = job.mitra?.name?.toLowerCase() || "";
       const city = job.mitra?.city?.toLowerCase() || "";
+      const location = job.location?.toLowerCase() || "";
 
       return (
         title.includes(searchTerm) ||
         company.includes(searchTerm) ||
-        city.includes(searchTerm)
+        city.includes(searchTerm) ||
+        location.includes(searchTerm)
       );
     })
-    .filter((job) => passesFilters(job)); 
+    .filter((job) => passesFilters(job));
 
   return (
     <section>
       <div className="space-y-6">
+        
         {filteredJobs.length === 0 && (
           <p className="text-gray-400">Tidak ada lowongan ditemukan.</p>
         )}
@@ -66,7 +72,7 @@ export default function ListLowongan({ searchTerm, filters }) {
               image={job.mitra?.photo || "/img/default.png"}
               company={job.mitra?.name}
               position={job.title}
-              lokasi={`${job.mitra?.address}, ${job.mitra?.city}`}
+              lokasi={job.location}                
               info={job.status}
               durasi={job.employment_duration}
               skema={job.work_type}
