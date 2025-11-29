@@ -1,10 +1,12 @@
+// INI BARU
+
+
 // src/components/lowongan/index.jsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Navbar from "../../layout/navbar";
 import NavbarLogin from "../../layout/navbarlogin";
-
 import HeaderSearch from "../../sections/lowongan/headersearch";
 import ListLowongan from "../../sections/lowongan/listlowongancard";
 import JobDetail from "../../sections/lowongan/jobdetail";
@@ -14,9 +16,26 @@ import { onAuthStateChanged } from "firebase/auth";
 import { ref, get } from "firebase/database";
 import { auth, db } from "../../database/firebase";
 
+import { getAllJobs } from "../../services/jobService";
+
 export default function LowonganPage() {
   const { jobId } = useParams();
+
   const [searchTerm, setSearchTerm] = useState("");
+
+  const [filters, setFilters] = useState({
+    locations: [],
+    positions: [],
+    workScheme: [],
+    duration: [],
+  });
+
+  const [filterOptions, setFilterOptions] = useState({
+    locations: [],
+    positions: [],
+    workScheme: [],
+    duration: [],
+  });
 
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
@@ -30,13 +49,8 @@ export default function LowonganPage() {
         try {
           const userRef = ref(db, `users/${firebaseUser.uid}`);
           const snap = await get(userRef);
-          if (snap.exists()) {
-            setUserData(snap.val());
-          } else {
-            setUserData(null);
-          }
-        } catch (err) {
-          console.error("Gagal ambil data user:", err);
+          setUserData(snap.exists() ? snap.val() : null);
+        } catch {
           setUserData(null);
         }
       } else {
@@ -48,6 +62,23 @@ export default function LowonganPage() {
     });
 
     return () => unsub();
+  }, []);
+
+  useEffect(() => {
+    const loadOptions = async () => {
+      const jobs = await getAllJobs();
+
+      setFilterOptions({
+        locations: [...new Set(jobs.map((j) => j.location).filter(Boolean))],
+        positions: [...new Set(jobs.map((j) => j.title).filter(Boolean))],
+        workScheme: [...new Set(jobs.map((j) => j.work_type).filter(Boolean))],
+        duration: [
+          ...new Set(jobs.map((j) => j.employment_duration).filter(Boolean)),
+        ],
+      });
+    };
+
+    loadOptions();
   }, []);
 
   if (loading) {
@@ -62,15 +93,19 @@ export default function LowonganPage() {
 
   return (
     <>
-      {/* kirim user dan userData ke navbar login */}
       <NavbarComponent user={user} userData={userData} />
 
-      <HeaderSearch onSearch={(value) => setSearchTerm(value.toLowerCase())} />
+      <HeaderSearch
+        onSearch={(value) => setSearchTerm(value.toLowerCase())}
+        filterOptions={filterOptions}
+        onApplyFilter={(selected) => setFilters(selected)}
+      />
 
       <div className="px-4 lg:px-12 mt-6 mb-20 grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-1">
-          <ListLowongan searchTerm={searchTerm} />
+          <ListLowongan searchTerm={searchTerm} filters={filters} />
         </div>
+
         <div className="lg:col-span-2">
           {jobId ? (
             <JobDetail />
