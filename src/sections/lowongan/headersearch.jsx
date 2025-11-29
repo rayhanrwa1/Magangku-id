@@ -165,7 +165,6 @@ const HeaderSearch = ({ onSearch, filterOptions, onApplyFilter}) => {
         </div>
       </div>
 
-      {/* Filter Modal */}
       {isFilterOpen && (
         <>
           <div 
@@ -194,7 +193,6 @@ const HeaderSearch = ({ onSearch, filterOptions, onApplyFilter}) => {
               </button>
             </div>
 
-            {/* Filter Content */}
             <div className="flex-1 overflow-y-auto p-6">
               <div className="space-y-8">
                 {filterSections.map((section) => (
@@ -282,7 +280,6 @@ const HeaderSearch = ({ onSearch, filterOptions, onApplyFilter}) => {
               </div>
             </div>
 
-            {/* Footer */}
             <div className="p-6 border-t border-gray-200 flex gap-3 bg-white">
               <button
                 onClick={clearAll}
