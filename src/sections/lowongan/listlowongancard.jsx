@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";  
+import { useNavigate } from "react-router-dom";
 import JobListCard from "../../layout/joblistcard";
 import { getAllJobs } from "../../services/jobService";
 
@@ -57,7 +57,6 @@ export default function ListLowongan({ searchTerm, filters }) {
   return (
     <section>
       <div className="space-y-6">
-        
         {filteredJobs.length === 0 && (
           <p className="text-gray-400">Tidak ada lowongan ditemukan.</p>
         )}
@@ -72,7 +71,7 @@ export default function ListLowongan({ searchTerm, filters }) {
               image={job.mitra?.photo || "/img/default.png"}
               company={job.mitra?.name}
               position={job.title}
-              lokasi={job.location}                
+              lokasi={job.location}
               info={job.status}
               durasi={job.employment_duration}
               skema={job.work_type}
