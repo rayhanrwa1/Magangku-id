@@ -37,7 +37,9 @@ const JobDetail = () => {
         setJob(jobData);
 
         if (jobData.mitra_id) {
-          const mitraSnap = await get(child(dbRef, `mitra/${jobData.mitra_id}`));
+          const mitraSnap = await get(
+            child(dbRef, `mitra/${jobData.mitra_id}`)
+          );
 
           if (mitraSnap.exists()) {
             setMitra(mitraSnap.val());
@@ -60,7 +62,6 @@ const JobDetail = () => {
   return (
     <div className="pt-6 px-10 pb-10 bg-white rounded-2xl shadow-lg border">
       <div className="flex justify-between items-start mb-10">
-
         <div className="flex flex-col">
           <img
             src={mitra.photo || "/img/default.png"}
@@ -90,7 +91,6 @@ const JobDetail = () => {
             Chat Sekarang
           </button>
         </div>
-
       </div>
 
       <h3 className="font-semibold mb-2">Pendidikan</h3>

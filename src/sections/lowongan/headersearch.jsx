@@ -1,66 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const HeaderSearch = ({ onSearch, filterOptions, onApplyFilter}) => {
+const HeaderSearch = ({ onSearch, filterOptions, onApplyFilter }) => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState({
     locations: [],
     positions: [],
     workScheme: [],
-    duration: []
+    duration: [],
   });
   const [customOptions, setCustomOptions] = useState({
     locations: [],
     positions: [],
     workScheme: [],
-    duration: []
+    duration: [],
   });
   const [customInputs, setCustomInputs] = useState({
-    locations: '',  
-    positions: '',
-    workScheme: '',
-    duration: ''
+    locations: "",
+    positions: "",
+    workScheme: "",
+    duration: "",
   });
   const [showCustomInput, setShowCustomInput] = useState({
     locations: false,
     positions: false,
     workScheme: false,
-    duration: false
+    duration: false,
   });
 
   const filterSections = [
-  {
-    id: 'locations',
-    title: 'Lokasi',
-    options: filterOptions.locations.map(loc => ({
-      value: loc.toLowerCase(),
-      label: loc
-    }))
-  },
-  {
-    id: 'positions',
-    title: 'Posisi',
-    options: filterOptions.positions.map(pos => ({
-      value: pos.toLowerCase(),
-      label: pos
-    }))
-  },
-  {
-    id: 'workScheme',
-    title: 'Skema Kerja',
-    options: filterOptions.workScheme.map(w => ({
-      value: w.toLowerCase(),
-      label: w
-    }))
-  },
-  {
-    id: 'duration',
-    title: 'Durasi',
-    options: filterOptions.duration.map(d => ({
-      value: d.toLowerCase(),
-      label: d
-    }))
-  }
-];
+    {
+      id: "locations",
+      title: "Lokasi",
+      options: filterOptions.locations.map((loc) => ({
+        value: loc.toLowerCase(),
+        label: loc,
+      })),
+    },
+    {
+      id: "positions",
+      title: "Posisi",
+      options: filterOptions.positions.map((pos) => ({
+        value: pos.toLowerCase(),
+        label: pos,
+      })),
+    },
+    {
+      id: "workScheme",
+      title: "Skema Kerja",
+      options: filterOptions.workScheme.map((w) => ({
+        value: w.toLowerCase(),
+        label: w,
+      })),
+    },
+    {
+      id: "duration",
+      title: "Durasi",
+      options: filterOptions.duration.map((d) => ({
+        value: d.toLowerCase(),
+        label: d,
+      })),
+    },
+  ];
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -69,10 +69,10 @@ const HeaderSearch = ({ onSearch, filterOptions, onApplyFilter}) => {
   };
 
   const toggleFilter = (section, value) => {
-    setSelectedFilters(prev => {
+    setSelectedFilters((prev) => {
       const current = prev[section];
       const newValues = current.includes(value)
-        ? current.filter(v => v !== value)
+        ? current.filter((v) => v !== value)
         : [...current, value];
       return { ...prev, [section]: newValues };
     });
@@ -81,21 +81,21 @@ const HeaderSearch = ({ onSearch, filterOptions, onApplyFilter}) => {
   const addCustomOption = (section) => {
     const customValue = customInputs[section].trim();
     if (customValue && !customOptions[section].includes(customValue)) {
-      setCustomOptions(prev => ({
+      setCustomOptions((prev) => ({
         ...prev,
-        [section]: [...prev[section], customValue]
+        [section]: [...prev[section], customValue],
       }));
-      setSelectedFilters(prev => ({
+      setSelectedFilters((prev) => ({
         ...prev,
-        [section]: [...prev[section], customValue]
+        [section]: [...prev[section], customValue],
       }));
-      setCustomInputs(prev => ({ ...prev, [section]: '' }));
-      setShowCustomInput(prev => ({ ...prev, [section]: false }));
+      setCustomInputs((prev) => ({ ...prev, [section]: "" }));
+      setShowCustomInput((prev) => ({ ...prev, [section]: false }));
     }
   };
 
   const handleCustomInputKeyPress = (e, section) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       addCustomOption(section);
     }
   };
@@ -105,25 +105,25 @@ const HeaderSearch = ({ onSearch, filterOptions, onApplyFilter}) => {
       locations: [],
       positions: [],
       workScheme: [],
-      duration: []
+      duration: [],
     });
     setCustomOptions({
       locations: [],
       positions: [],
       workScheme: [],
-      duration: []
+      duration: [],
     });
     setShowCustomInput({
       locations: false,
       positions: false,
       workScheme: false,
-      duration: false
+      duration: false,
     });
     setCustomInputs({
-      locations: '',
-      positions: '',
-      workScheme: '',
-      duration: ''
+      locations: "",
+      positions: "",
+      workScheme: "",
+      duration: "",
     });
   };
 
@@ -132,10 +132,9 @@ const HeaderSearch = ({ onSearch, filterOptions, onApplyFilter}) => {
   };
 
   const handleApplyFilter = () => {
-  onApplyFilter(selectedFilters);
-  setIsFilterOpen(false);
+    onApplyFilter(selectedFilters);
+    setIsFilterOpen(false);
   };
-
 
   return (
     <>
@@ -167,7 +166,7 @@ const HeaderSearch = ({ onSearch, filterOptions, onApplyFilter}) => {
 
       {isFilterOpen && (
         <>
-          <div 
+          <div
             className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300"
             onClick={() => setIsFilterOpen(false)}
           />
@@ -205,42 +204,54 @@ const HeaderSearch = ({ onSearch, filterOptions, onApplyFilter}) => {
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                       {section.options.map((option) => {
-                        const isSelected = selectedFilters[section.id].includes(option.value);
+                        const isSelected = selectedFilters[section.id].includes(
+                          option.value
+                        );
                         return (
                           <button
                             key={option.value}
-                            onClick={() => toggleFilter(section.id, option.value)}
+                            onClick={() =>
+                              toggleFilter(section.id, option.value)
+                            }
                             className={`px-4 py-3 rounded-lg border-2 transition-all text-sm font-medium ${
                               isSelected
-                                ? 'bg-blue-50 border-blue-500 text-blue-700'
-                                : 'bg-white border-gray-200 text-gray-700 hover:border-gray-300'
+                                ? "bg-blue-50 border-blue-500 text-blue-700"
+                                : "bg-white border-gray-200 text-gray-700 hover:border-gray-300"
                             }`}
                           >
                             {option.label}
                           </button>
                         );
                       })}
-                      
+
                       {customOptions[section.id].map((customOption) => {
-                        const isSelected = selectedFilters[section.id].includes(customOption);
+                        const isSelected =
+                          selectedFilters[section.id].includes(customOption);
                         return (
                           <button
                             key={customOption}
-                            onClick={() => toggleFilter(section.id, customOption)}
+                            onClick={() =>
+                              toggleFilter(section.id, customOption)
+                            }
                             className={`px-4 py-3 rounded-lg border-2 transition-all text-sm font-medium ${
                               isSelected
-                                ? 'bg-blue-50 border-blue-500 text-blue-700'
-                                : 'bg-white border-gray-200 text-gray-700 hover:border-gray-300'
+                                ? "bg-blue-50 border-blue-500 text-blue-700"
+                                : "bg-white border-gray-200 text-gray-700 hover:border-gray-300"
                             }`}
                           >
                             {customOption}
                           </button>
                         );
                       })}
-                      
+
                       {!showCustomInput[section.id] ? (
                         <button
-                          onClick={() => setShowCustomInput(prev => ({ ...prev, [section.id]: true }))}
+                          onClick={() =>
+                            setShowCustomInput((prev) => ({
+                              ...prev,
+                              [section.id]: true,
+                            }))
+                          }
                           className="px-4 py-3 rounded-lg border-2 border-dashed border-gray-300 text-gray-600 hover:border-blue-400 hover:text-blue-600 transition-all text-sm font-medium flex items-center justify-center gap-2"
                         >
                           <i className="bi bi-plus-lg"></i>
@@ -251,8 +262,15 @@ const HeaderSearch = ({ onSearch, filterOptions, onApplyFilter}) => {
                           <input
                             type="text"
                             value={customInputs[section.id]}
-                            onChange={(e) => setCustomInputs(prev => ({ ...prev, [section.id]: e.target.value }))}
-                            onKeyPress={(e) => handleCustomInputKeyPress(e, section.id)}
+                            onChange={(e) =>
+                              setCustomInputs((prev) => ({
+                                ...prev,
+                                [section.id]: e.target.value,
+                              }))
+                            }
+                            onKeyPress={(e) =>
+                              handleCustomInputKeyPress(e, section.id)
+                            }
                             placeholder={`Masukkan ${section.title.toLowerCase()} lainnya...`}
                             className="flex-1 px-4 py-2 border-2 border-blue-400 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                             autoFocus
@@ -265,8 +283,14 @@ const HeaderSearch = ({ onSearch, filterOptions, onApplyFilter}) => {
                           </button>
                           <button
                             onClick={() => {
-                              setShowCustomInput(prev => ({ ...prev, [section.id]: false }));
-                              setCustomInputs(prev => ({ ...prev, [section.id]: '' }));
+                              setShowCustomInput((prev) => ({
+                                ...prev,
+                                [section.id]: false,
+                              }));
+                              setCustomInputs((prev) => ({
+                                ...prev,
+                                [section.id]: "",
+                              }));
                             }}
                             className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
                           >

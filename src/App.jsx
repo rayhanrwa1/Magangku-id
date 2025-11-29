@@ -7,8 +7,9 @@ import Tentang_Kammi from "./pages/tentangkami";
 import Pusat_Privasi from "./pages/pusatprivasi";
 import Syarat_Ketentuan from "./pages/syaratketentuan"
 import Register from "./pages/register";
-import ProfilePage from "./pages/profile";
-import PanduanPage from "./pages/panduan";
+import ProfilePage from "./pages/profile.jsx";
+import PanduanPage from "./pages/panduan.jsx";
+
 
 export default function App() {
   return (
